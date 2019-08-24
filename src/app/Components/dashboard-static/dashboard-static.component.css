@@ -1,0 +1,33 @@
+.canvas-container{
+    height: calc(100vh - 114px);
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+.context-bar{
+    width: 50%;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.centre{
+    text-align: center;
+}
+
+.d16{
+    margin-top:16px;
+    padding-top: 10px;
+    font-family: 'Exo 2', sans-serif;
+}
+
+.background{
+    position: absolute;
+    top: 0px;
+    height: 100vh;
+    width: 100vw;
+    padding: 0px;
+    margin: auto;
+    overflow: hidden;
+}

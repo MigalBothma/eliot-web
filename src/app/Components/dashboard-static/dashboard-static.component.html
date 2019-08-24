@@ -1,0 +1,84 @@
+<div class="background">
+    <img src="/assets/Home_background.jpg" style="z-index: 0;">
+</div>
+
+<div class="card shadow context-bar">
+    <ul class="nav nav-tabs">
+        <li *ngFor="let location of locations | async" class="nav-link"> {{location}} </li>
+    </ul>
+</div>
+
+<div class="canvas-container">
+    <div *ngIf="latestTimestamp.length > 0" class="row" style="width: 100%; margin-left: auto; margin-right: auto; display: inline-flex; max-height: 70vh;">
+        <div class="col-sm">
+            <div class="card centre d16 shadow">
+                <h4>Latest Timestamp</h4>
+                <p>{{latestTimestamp | date : 'yyyy-MM-dd HH:mm:ss'}}</p>
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="card centre d16 shadow">
+                <h4>Latest DS18B20 Temp</h4>
+                <p>{{latestDS18Temperature}}</p>
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="card centre d16 shadow">
+                <h4>Latest DHT-11 Temp</h4>
+                <p>{{latestDHT11Temperature}}</p>
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="card centre d16 shadow">
+                <h4>Latest DHT-11 Humidity</h4>
+                <p>{{latestDHT11Humidty}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="width: 100%; margin-left: auto; margin-right: auto;">
+        <div class="col-sm" style="padding-top: 16px;">
+            <div class="card shadow">
+                <div *ngIf='timestampValues' class="card-body">
+                    <h4 class="card-title">Temperature</h4>
+                    <apx-chart [series]="[{name : 'DHT-11-Temp', data: DHT11tempChartValues},{name : 'DS18B20-Temp', data : DS18BtempChartValues}]" [xaxis]="{categories : timestampValues, type: 'datetime'}"
+                        [yaxis]="{ min: -15, max: 40 }" [chart]="{
+                                type: 'line',
+                                stacked: false,
+                                height: 350,
+                                zoom: {
+                                  type: 'x',
+                                  enabled: true
+                                },
+                                toolbar: {
+                                  autoSelected: 'zoom'
+                                }
+                              }"
+                        [title]="Temperature"></apx-chart>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm" style="padding-top: 16px;">
+            <div class="card shadow">
+                <div *ngIf='timestampValues' class="card-body">
+                    <h4 class="card-title">Humidity</h4>
+                    <apx-chart [series]="[{name : 'DHT-11-Humidity', data : humidityChartValues}]" [xaxis]="{categories : timestampValues, type: 'datetime'}"
+                        [yaxis]="{ min: 5, max: 95 }" [chart]="{
+                                type: 'area',
+                                stacked: false,
+                                height: 350,
+                                zoom: {
+                                  type: 'x',
+                                  enabled: true
+                                },
+                                toolbar: {
+                                  autoSelected: 'zoom'
+                                }
+                              }"
+                        [title]="Humidity"></apx-chart>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="spinner"></div>

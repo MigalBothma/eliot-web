@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './Components/home/home.component';
 import { DashboardComponent } from './Components/dashboard/dashboard.component';
+import { DashboardStaticComponent } from './Components/dashboard-static/dashboard-static.component';
 
 const routes: Routes = [
   { path: '',
@@ -14,7 +15,7 @@ const routes: Routes = [
   },
   { path: 'dashboard',
     pathMatch: 'full',
-    component: DashboardComponent
+    component: DashboardStaticComponent
   }
 ];
 
