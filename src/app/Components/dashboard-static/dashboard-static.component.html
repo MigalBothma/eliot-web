@@ -1,40 +1,39 @@
 <div id="background">
-</div>
 
-<div class="card shadow context-bar">
-    <ul class="nav nav-tabs">
-        <li *ngFor="let location of locations | async" class="nav-link"> {{location}} </li>
-    </ul>
-</div>
+    <div class="card shadow context-bar">
+        <ul class="nav nav-tabs">
+            <li *ngFor="let location of locations | async" class="nav-link"> {{location}} </li>
+        </ul>
+    </div>
 
-<div class="canvas-container">
-    <div *ngIf="latestTimestamp.length > 0" class="row" style="width: 100%; margin-left: auto; margin-right: auto; display: inline-flex; max-height: 70vh;">
-        <div class="col-sm">
-            <div class="card centre d16 shadow">
-                <div class="latest-value">
-                    <h4>Latest Timestamp</h4>
-                    <p>{{latestTimestamp | date : 'yyyy-MM-dd HH:mm:ss'}}</p>
-                </div>
-            </div>
-            <div class="card centre d16 shadow">
-                <div class="latest-value">
-                    <div class="row justify-content-center" style="margin: auto;">
-                        <i class="material-icons" style="text-align:center;">
-                            feedback
-                        </i>
-                        <h4 style="text-align:center;">Latest Alerts</h4>
+    <div class="canvas-container">
+        <div *ngIf="latestTimestamp.length > 0" class="row" style="width: 100%; margin-left: auto; margin-right: auto;">
+            <div class="col-sm">
+                <div class="card centre d16 shadow">
+                    <div class="latest-value">
+                        <h4>Latest Timestamp</h4>
+                        <p>{{latestTimestamp | date : 'yyyy-MM-dd HH:mm:ss'}}</p>
                     </div>
-                    <p> None </p>
+                </div>
+                <div class="card centre d16 shadow">
+                    <div class="latest-value">
+                        <div class="row justify-content-center" style="margin: auto;">
+                            <i class="material-icons" style="text-align:center;">
+                                feedback
+                            </i>
+                            <h4 style="text-align:center;">Latest Alerts</h4>
+                        </div>
+                        <p> None </p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-sm">
-            <div class="card centre d16 shadow">
-                <div class="latest-value">
-                    <h4>Latest DS18B20 Temp</h4>
-                    <p>{{latestDS18Temperature}} °C</p>
-                </div>
-                <apx-chart [chart]="{
+            <div class="col-sm">
+                <div class="card centre d16 shadow">
+                    <div class="latest-value">
+                        <h4>Latest DS18B20 Temp</h4>
+                        <p>{{latestDS18Temperature}} °C</p>
+                    </div>
+                    <apx-chart [chart]="{
                     height: 350,
                     type: 'radialBar', 
                     radialBar: {
@@ -43,8 +42,8 @@
                         }
                     }
                 }"
-                    [series]="[DS18BminTempChartValue, DS18BavgTempChartValue, DS18BmaxTempChartValue]" [labels]="['Min-Temp','Avg-Temp','Max-Temp']"
-                    [plotOptions]="{
+                        [series]="[DS18BminTempChartValue, DS18BavgTempChartValue, DS18BmaxTempChartValue]" [labels]="['Min-Temp','Avg-Temp','Max-Temp']"
+                        [plotOptions]="{
                             radialBar: {
                                 offsetY: -6,
                                 startAngle: 0,
@@ -65,7 +64,7 @@
                             }
                         }
                     }"
-                    [colors]="['#1ab7ea', '#0084ff', '#39539E', '#0077B5']" [responsive]="[{
+                        [colors]="['#1ab7ea', '#0084ff', '#39539E', '#0077B5']" [responsive]="[{
                         breakpoint: 480,
                         options: {
                             legend: {
@@ -73,7 +72,7 @@
                             }
                         }
                     }]"
-                    [legend]="{
+                        [legend]="{
                         show: true,
                         floating: true,
                         fontSize: '12px',
@@ -90,15 +89,15 @@
                             horizontal: 2
                         }
                     }"></apx-chart>
-            </div>
-        </div>
-        <div class="col-sm">
-            <div class="card centre d16 shadow">
-                <div class="latest-value">
-                    <h4>Latest DHT-11 Temp</h4>
-                    <p>{{latestDHT11Temperature}} °C</p>
                 </div>
-                <apx-chart [chart]="{
+            </div>
+            <div class="col-sm">
+                <div class="card centre d16 shadow">
+                    <div class="latest-value">
+                        <h4>Latest DHT-11 Temp</h4>
+                        <p>{{latestDHT11Temperature}} °C</p>
+                    </div>
+                    <apx-chart [chart]="{
                     height: 350,
                     type: 'radialBar', 
                     radialBar: {
@@ -107,8 +106,8 @@
                         }
                     }
                 }"
-                    [series]="[DHT11minTempChartValue, DHT11avgTempChartValue, DHT11maxTempChartValue]" [labels]="['Min-Temp','Avg-Temp','Max-Temp']"
-                    [plotOptions]="{
+                        [series]="[DHT11minTempChartValue, DHT11avgTempChartValue, DHT11maxTempChartValue]" [labels]="['Min-Temp','Avg-Temp','Max-Temp']"
+                        [plotOptions]="{
                             radialBar: {
                                 offsetY: -8,
                                 startAngle: 0,
@@ -129,7 +128,7 @@
                             }
                         }
                     }"
-                    [colors]="['#1ab7ea', '#0084ff', '#39539E', '#0077B5']" [legend]="{
+                        [colors]="['#1ab7ea', '#0084ff', '#39539E', '#0077B5']" [legend]="{
                         show: true,
                         floating: true,
                         fontSize: '12px',
@@ -146,15 +145,15 @@
                             horizontal: 2
                         }
                     }"></apx-chart>
-            </div>
-        </div>
-        <div class="col-sm">
-            <div class="card centre d16 shadow">
-                <div class="latest-value">
-                    <h4>Latest DHT-11 Humidity</h4>
-                    <p>{{latestDHT11Humidity}} %</p>
                 </div>
-                <apx-chart [chart]="{
+            </div>
+            <div class="col-sm">
+                <div class="card centre d16 shadow">
+                    <div class="latest-value">
+                        <h4>Latest DHT-11 Humidity</h4>
+                        <p>{{latestDHT11Humidity}} %</p>
+                    </div>
+                    <apx-chart [chart]="{
                     height: 350,
                     type: 'radialBar', 
                     radialBar: {
@@ -163,8 +162,8 @@
                         }
                     }
                 }"
-                    [series]="[DHT11minHumidityChartValue, DHT11avgHumidityChartValue, DHT11maxHumidityChartValue]"
-                    [labels]="['Min-Humidity','Avg-Humidity','Max-Humidity']" [plotOptions]="{
+                        [series]="[DHT11minHumidityChartValue, DHT11avgHumidityChartValue, DHT11maxHumidityChartValue]"
+                        [labels]="['Min-Humidity','Avg-Humidity','Max-Humidity']" [plotOptions]="{
                             radialBar: {
                                 offsetY: -8,
                                 startAngle: 0,
@@ -185,7 +184,7 @@
                             }
                         }
                     }"
-                    [colors]="['#1ab7ea', '#0084ff', '#39539E', '#0077B5']" [responsive]="[{
+                        [colors]="['#1ab7ea', '#0084ff', '#39539E', '#0077B5']" [responsive]="[{
                         breakpoint: 480,
                         options: {
                             legend: {
@@ -193,7 +192,7 @@
                             }
                         }
                     }]"
-                    [legend]="{
+                        [legend]="{
                         show: true,
                         floating: true,
                         fontSize: '12px',
@@ -210,17 +209,17 @@
                             horizontal: 2
                         }
                     }"></apx-chart>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="row" style="width: 100%; margin-left: auto; margin-right: auto;">
-        <div class="col-sm" style="padding-top: 16px;">
-            <div class="card shadow">
-                <div *ngIf='timestampValues' class="card-body">
-                    <h4 class="card-title">Temperature</h4>
-                    <apx-chart [series]="[{name : 'DHT-11-Temp', data: DHT11tempChartValues},{name : 'DS18B20-Temp', data : DS18BtempChartValues}]"
-                        [xaxis]="{categories : timestampValues, type: 'datetime'}" [yaxis]="{ min: -15, max: 40 }"
-                        [chart]="{
+        <div class="row" style="width: 100%; margin-left: auto; margin-right: auto;">
+            <div class="col-sm" style="padding-top: 16px;">
+                <div class="card shadow">
+                    <div *ngIf='timestampValues' class="card-body">
+                        <h4 class="card-title">Temperature</h4>
+                        <apx-chart [series]="[{name : 'DHT-11-Temp', data: DHT11tempChartValues},{name : 'DS18B20-Temp', data : DS18BtempChartValues}]"
+                            [xaxis]="{categories : timestampValues, type: 'datetime'}" [yaxis]="{ min: -15, max: 40 }"
+                            [chart]="{
                                 type: 'line',
                                 stacked: false,
                                 height: 350,
@@ -232,16 +231,16 @@
                                   autoSelected: 'zoom'
                                 }
                               }"
-                        [title]="Temperature"></apx-chart>
+                            [title]="Temperature"></apx-chart>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-sm" style="padding-top: 16px;">
-            <div class="card shadow">
-                <div *ngIf='timestampValues' class="card-body">
-                    <h4 class="card-title">Humidity</h4>
-                    <apx-chart [series]="[{name : 'DHT-11-Humidity', data : humidityChartValues}]" [xaxis]="{categories : timestampValues, type: 'datetime'}"
-                        [yaxis]="{ min: 5, max: 95 }" [chart]="{
+            <div class="col-sm" style="padding-top: 16px;">
+                <div class="card shadow">
+                    <div *ngIf='timestampValues' class="card-body">
+                        <h4 class="card-title">Humidity</h4>
+                        <apx-chart [series]="[{name : 'DHT-11-Humidity', data : humidityChartValues}]" [xaxis]="{categories : timestampValues, type: 'datetime'}"
+                            [yaxis]="{ min: 5, max: 95 }" [chart]="{
                                 type: 'area',
                                 stacked: false,
                                 height: 350,
@@ -253,19 +252,20 @@
                                   autoSelected: 'zoom'
                                 }
                               }"
-                        [title]="Humidity">
-                    </apx-chart>
+                            [title]="Humidity">
+                        </apx-chart>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- <div *ngIf="latestTimestamp.length > 0" class="row" style="width: 100%; margin-left: auto; margin-right: auto; display: inline-flex; max-height: 70vh;">
+        <!-- <div *ngIf="latestTimestamp.length > 0" class="row" style="width: 100%; margin-left: auto; margin-right: auto; display: inline-flex; max-height: 70vh;">
         <div class="col-sm">
             <div class="card centre d16 shadow">
                 
             </div>
         </div>
     </div> -->
+    </div>
 </div>
 <div class="spinner"></div>

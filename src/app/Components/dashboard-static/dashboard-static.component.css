@@ -40,7 +40,7 @@
     margin: auto;
 
     background-image: url('/assets/Home_background.jpg');
+    background-attachment: fixed;
     background-size: cover;
     background-position: center;
-    background-repeat: repeat;
 }
