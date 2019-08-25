@@ -1,3 +1,27 @@
+@media (min-width: 481px) and (max-width: 767px) {
+    .logo-container img{
+        width: 80%;
+        position: absolute;
+        right: 0;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto auto;
+        }
+    }
+
+@media (min-width: 320px) and (max-width: 480px) {
+    .logo-container img{
+        width: 80%;
+        position: absolute;
+        right: 0;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto auto;
+        }
+    }   
+
 .canvas-container{
     width: 80%;
     margin: auto;
@@ -43,4 +67,23 @@
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
+}
+
+.logo-container{
+    position: absolute;
+    height: calc(100vh - 166px);
+    width: 100vw;
+    padding: 0px;
+    z-index: 1;
+    top: 66px;
+    left: 0px;
+}
+.logo-container img{
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto auto;
+    animation: breathing 4s infinite;
 }

@@ -7,6 +7,11 @@
     </div>
 
     <div class="canvas-container">
+        <div *ngIf="!latestTimestamp.length > 0" class="spinner">
+            <div class="logo-container">
+                <img src="/assets/ELIOT.png">
+            </div>
+        </div>
         <div *ngIf="latestTimestamp.length > 0" class="row" style="width: 100%; margin-left: auto; margin-right: auto;">
             <div class="col-sm">
                 <div class="card centre d16 shadow">
@@ -212,13 +217,18 @@
                 </div>
             </div>
         </div>
-        <div class="row" style="width: 100%; margin-left: auto; margin-right: auto;">
+        <div *ngIf="latestTimestamp.length > 0" class="row" style="width: 100%; margin-left: auto; margin-right: auto;">
             <div class="col-sm" style="padding-top: 16px;">
                 <div class="card shadow">
                     <div *ngIf='timestampValues' class="card-body">
                         <h4 class="card-title">Temperature</h4>
                         <apx-chart [series]="[{name : 'DHT-11-Temp', data: DHT11tempChartValues},{name : 'DS18B20-Temp', data : DS18BtempChartValues}]"
                             [xaxis]="{categories : timestampValues, type: 'datetime'}" [yaxis]="{ min: -15, max: 40 }"
+                            [stroke]="{
+                                show: true,
+                                width: 1,
+                                dashArray: 0    
+                            }"
                             [chart]="{
                                 type: 'line',
                                 stacked: false,
@@ -239,8 +249,14 @@
                 <div class="card shadow">
                     <div *ngIf='timestampValues' class="card-body">
                         <h4 class="card-title">Humidity</h4>
-                        <apx-chart [series]="[{name : 'DHT-11-Humidity', data : humidityChartValues}]" [xaxis]="{categories : timestampValues, type: 'datetime'}"
-                            [yaxis]="{ min: 5, max: 95 }" [chart]="{
+                        <apx-chart [series]="[{name : 'DHT-11-Humidity', data : humidityChartValues}]" [xaxis]="{ categories : timestampValues, type: 'datetime' }"
+                            [yaxis]="{ min: 5, max: 95 }" [stroke]="{
+                                show: true,
+                                curve: 'smooth',
+                                width: 1,
+                                dashArray: 0    
+                            }"
+                            [chart]="{
                                 type: 'area',
                                 stacked: false,
                                 height: 350,
@@ -258,14 +274,5 @@
                 </div>
             </div>
         </div>
-
-        <!-- <div *ngIf="latestTimestamp.length > 0" class="row" style="width: 100%; margin-left: auto; margin-right: auto; display: inline-flex; max-height: 70vh;">
-        <div class="col-sm">
-            <div class="card centre d16 shadow">
-                
-            </div>
-        </div>
-    </div> -->
     </div>
 </div>
-<div class="spinner"></div>
