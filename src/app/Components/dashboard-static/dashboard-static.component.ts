@@ -13,23 +13,20 @@ import { ChartComponent } from 'ng-apexcharts';
 
 export class DashboardStaticComponent implements OnInit {
   //@ViewChild('tempChart') tempChart : ChartComponent;
+  public selectedLocation = new Subject();
+
+  //Areadata for selected Location
+  public areadata;
+  public areasForSelected;
 
   public DS18BtempChartValues = new Subject();
   public DHT11tempChartValues = new Subject();
   public humidityChartValues = new Subject();
   public timestampValues = new Subject();
 
-  public DS18BavgTempChartValue;
-  public DS18BminTempChartValue;
-  public DS18BmaxTempChartValue;
-
-  public DHT11avgTempChartValue;
-  public DHT11minTempChartValue;
-  public DHT11maxTempChartValue;
-
-  public DHT11avgHumidityChartValue;
-  public DHT11minHumidityChartValue;
-  public DHT11maxHumidityChartValue;
+  public DS18BminavgmaxTempChartValue = {};
+  public DHT11minavgmaxTempChartValue = {};
+  public DHT11minavgmaxHumidityChartValue = {};
 
   public latestTimestamp = new Subject();
   public latestDS18Temperature = new Subject();
@@ -50,7 +47,6 @@ export class DashboardStaticComponent implements OnInit {
   constructor(private tsService: TimeseriesService) { }
 
   ngOnInit() {
-
     this.tsService.getDataByCompany('Migal')
       .subscribe(eventsLocationData => {
         if (eventsLocationData) {
@@ -75,25 +71,33 @@ export class DashboardStaticComponent implements OnInit {
           this.timestampValues = this.chartData[0]["Study"]["timestamp"];
 
           //get Latest values
-          this.latestTimestamp = this.chartData[0]["Study"]["timestamp"][this.chartData[0]["Study"]["timestamp"].length - 1];
-          this.latestDS18Temperature = this.chartData[0]["Study"]["DS18B20-Temp"][this.chartData[0]["Study"]["DS18B20-Temp"].length - 1];
-          this.latestDHT11Temperature = this.chartData[0]["Study"]["DHT-11-Temp"][this.chartData[0]["Study"]["DHT-11-Temp"].length - 1];
-          this.latestDHT11Humidity = this.chartData[0]["Study"]["DHT-11-Humidity"][this.chartData[0]["Study"]["DHT-11-Humidity"].length - 1];
+          this.getLatestValues(this.chartData[0]);
 
           //get Average, Min, Max
-          this.DS18BavgTempChartValue = this.getAverage(this.chartData[0]["Study"]["DS18B20-Temp"]);
-          this.DHT11avgTempChartValue = this.getAverage(this.chartData[0]["Study"]["DHT-11-Temp"]);
-          this.DHT11avgHumidityChartValue = this.getAverage(this.chartData[0]["Study"]["DHT-11-Humidity"]);
-
-          this.DS18BminTempChartValue = this.getMin(this.chartData[0]["Study"]["DS18B20-Temp"]);
-          this.DHT11minTempChartValue = this.getMin(this.chartData[0]["Study"]["DHT-11-Temp"]);
-          this.DHT11minHumidityChartValue = this.getMin(this.chartData[0]["Study"]["DHT-11-Humidity"]);
-
-          this.DS18BmaxTempChartValue = this.getMax(this.chartData[0]["Study"]["DS18B20-Temp"]);
-          this.DHT11maxTempChartValue = this.getMax(this.chartData[0]["Study"]["DHT-11-Temp"]);
-          this.DHT11maxHumidityChartValue = this.getMax(this.chartData[0]["Study"]["DHT-11-Humidity"]);
+          this.getMinMaxAverage(this.chartData[0]);      
         }
       });
+  }
+
+  public getLatestValues( chartData ){
+    this.latestTimestamp = chartData["Study"]["timestamp"][chartData["Study"]["timestamp"].length - 1];
+    this.latestDS18Temperature = chartData["Study"]["DS18B20-Temp"][chartData["Study"]["DS18B20-Temp"].length - 1];
+    this.latestDHT11Temperature = chartData["Study"]["DHT-11-Temp"][chartData["Study"]["DHT-11-Temp"].length - 1];
+    this.latestDHT11Humidity = chartData["Study"]["DHT-11-Humidity"][chartData["Study"]["DHT-11-Humidity"].length - 1];
+  }
+
+  public getMinMaxAverage( chartData ){
+    this.DS18BminavgmaxTempChartValue["min"] = this.getMin(this.chartData[0]["Study"]["DS18B20-Temp"]);
+    this.DS18BminavgmaxTempChartValue["avg"] = this.getAverage(this.chartData[0]["Study"]["DS18B20-Temp"]);
+    this.DS18BminavgmaxTempChartValue["max"] = this.getMax(this.chartData[0]["Study"]["DS18B20-Temp"]);
+
+    this.DHT11minavgmaxTempChartValue["min"] = this.getMin(this.chartData[0]["Study"]["DHT-11-Temp"]);
+    this.DHT11minavgmaxTempChartValue["avg"] = this.getAverage(this.chartData[0]["Study"]["DHT-11-Temp"]);
+    this.DHT11minavgmaxTempChartValue["max"] = this.getMax(this.chartData[0]["Study"]["DHT-11-Temp"]);
+
+    this.DHT11minavgmaxHumidityChartValue["min"] = this.getMin(this.chartData[0]["Study"]["DHT-11-Humidity"]);
+    this.DHT11minavgmaxHumidityChartValue["avg"] = this.getAverage(this.chartData[0]["Study"]["DHT-11-Humidity"]);
+    this.DHT11minavgmaxHumidityChartValue["max"] = this.getMax(this.chartData[0]["Study"]["DHT-11-Humidity"]);
   }
 
   public getAverage(arr){
@@ -117,6 +121,16 @@ export class DashboardStaticComponent implements OnInit {
   public getMin( arr : any ){
     let min = Math.min(...arr);
     return min;
+  }
+
+  public setSelectedLocation(location){
+    debugger;
+    this.selectedLocation = location;
+
+    if(this.selectedLocation){
+      this.areadata = this.timeseriesData[location][0];
+      this.areasForSelected = Object.keys(this.timeseriesData[location][0]);
+    }
   }
 
   ngAfterViewInit() {

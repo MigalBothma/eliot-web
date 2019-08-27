@@ -1,40 +1,71 @@
 @media (min-width: 481px) and (max-width: 767px) {
-    .logo-container img{
-        width: 80%;
+    .logo-container img {
+        width: 50%;
         position: absolute;
         right: 0;
         left: 0;
         top: 0;
         bottom: 0;
         margin: auto auto;
-        }
     }
+    .areaHeading {
+        flex: 7 !important;
+    }
+}
 
 @media (min-width: 320px) and (max-width: 480px) {
-    .logo-container img{
-        width: 80%;
+    .logo-container img {
+        width: 50%;
         position: absolute;
         right: 0;
         left: 0;
         top: 0;
         bottom: 0;
         margin: auto auto;
-        }
-    }   
+    }
+    .areaHeading {
+        flex: 7 !important;
+    }
+}
 
-.canvas-container{
+.canvas-container {
     width: 80%;
     margin: auto;
 }
 
-.context-bar{
+.areaHeading {
+    margin: 8px;
+    background-color: #F44336;
+    align-self: center;
+    text-align: center;
+    padding: 2px;
+    border-radius: 5px;
+    color: white;
+    font: 16px 'Exo 2', sans-serif;
+    box-shadow: 5px 4px 7px #888888;
+}
+
+.areaHeading-container {
+    padding: 15px;
+    flex: 2;
+    text-align: center;
+}
+
+.loadingdata {
+    justify-content: center;
+    margin: 0px;
+    padding: 10px;
+    font: 'Exo 2', sans-serif;
+}
+
+.context-bar {
     width: 50%;
     margin-top: 16px;
     margin-left: auto;
     margin-right: auto;
 }
 
-.centre{
+.centre {
     text-align: center;
 }
 
@@ -43,13 +74,13 @@
     align-items: center;
 }
 
-.d16{
-    margin-top:16px;
+.d16 {
+    margin-top: 16px;
     padding: 10px;
     font-family: 'Exo 2', sans-serif;
 }
 
-.latest-value{
+.latest-value {
     padding: 10px;
     border-radius: 5px;
     background-color: #0383fe;
@@ -57,19 +88,18 @@
     box-shadow: 5px 4px 7px #888888
 }
 
-#background{
+#background {
     position: absolute;
     width: 100%;
     min-height: 70em;
     margin: auto;
-
     background-image: url('/assets/Home_background.jpg');
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
 }
 
-.logo-container{
+.logo-container {
     position: absolute;
     height: calc(100vh - 166px);
     width: 100vw;
@@ -78,7 +108,8 @@
     top: 66px;
     left: 0px;
 }
-.logo-container img{
+
+.logo-container img {
     position: absolute;
     right: 0;
     left: 0;
