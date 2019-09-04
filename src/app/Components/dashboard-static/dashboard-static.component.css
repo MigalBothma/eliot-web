@@ -34,6 +34,19 @@
     padding-bottom: 32px;
 }
 
+.p1{
+    margin-top: 6px;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,0.2)!important;
+    padding: 4px;
+    margin-bottom: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #00000033;
+    border-radius: 5px;
+    border: 1px solid #ffffff70;
+    width: 40%;
+}
+
 .areaHeading {
     margin: 8px;
     background-color: #F44336;

@@ -38,7 +38,7 @@
                                 </i>
                                 <h4 style="text-align:center;">Latest Timestamp</h4>
                             </div>
-                            <p>{{latestTimestamp | date : 'yyyy-MM-dd HH:mm:ss'}}</p>
+                            <p class="p1">{{latestTimestamp | date : 'yyyy-MM-dd HH:mm:ss'}}</p>
                         </div>
                     </div>
                 </div>
@@ -51,7 +51,7 @@
                                 </i>
                                 <h4 style="text-align:center;">Latest Alerts</h4>
                             </div>
-                            <p> None </p>
+                            <p class="p1"> None </p>
                         </div>
                     </div>
                 </div>
@@ -61,184 +61,93 @@
                     <div class="card centre d16 shadow">
                         <div class="latest-value">
                             <h4>Latest DS18B20 Temp</h4>
-                            <p>{{latestDS18Temperature}} °C</p>
+                            <p class="p1">{{latestDS18Temperature}} °C</p>
                         </div>
                         <apx-chart [chart]="{
-                        height: 350,
-                        type: 'radialBar', 
-                        radialBar: {
-                            hollow: {
-                                size: '70%'
-                            }
-                        }
-                    }"
-                            [series]="[DS18BminavgmaxTempChartValue.min, DS18BminavgmaxTempChartValue.avg, DS18BminavgmaxTempChartValue.max]"
-                            [labels]="['Min-Temp','Avg-Temp','Max-Temp']" [plotOptions]="{
-                                radialBar: {
-                                    offsetY: -6,
-                                    startAngle: 0,
-                                    endAngle: 270,
-                                    hollow: {
-                                        margin: 5,
-                                        size: '30%',
-                                        background: 'transparent',
-                                        image: undefined
-                                    },
+                                height: 350,
+                                type: 'bar'
+                            }"
+                            [plotOptions]="{
+                                bar: {
                                     dataLabels: {
-                                        name: {
-                                            show: false
-                                        },
-                                    value: {
-                                        show: true
+                                        position: 'top'
                                     }
                                 }
-                            }
-                        }"
-                            [colors]="['#1ab7ea', '#0084ff', '#39539E', '#0077B5']" [responsive]="[{
+                            }"
+                            [series]="[{data : [DS18BminavgmaxTempChartValue.min, DS18BminavgmaxTempChartValue.avg, DS18BminavgmaxTempChartValue.max]}]"
+                            [xaxis]="{
+                                categories : ['Min-Temp','Avg-Temp','Max-Temp']
+                            }"
+                            [responsive]="[{
                             breakpoint: 480,
                             options: {
                                 legend: {
                                     show: true
                                 }
                             }
-                        }]"
-                            [legend]="{
-                            show: true,
-                            floating: true,
-                            fontSize: '12px',
-                            position: 'left',
-                            offsetX: 10,
-                            offsetY: 8,
-                            labels: {
-                                useSeriesColors: true
-                            },
-                            markers: {
-                                size: 10
-                            },
-                            itemMargin: {
-                                horizontal: 2
-                            }
-                        }"></apx-chart>
+                        }]"></apx-chart>
                     </div>
                 </div>
                 <div class="col-lg">
                     <div class="card centre d16 shadow">
                         <div class="latest-value">
                             <h4>Latest DHT-11 Temp</h4>
-                            <p>{{latestDHT11Temperature}} °C</p>
+                            <p class="p1">{{latestDHT11Temperature}} °C</p>
                         </div>
                         <apx-chart [chart]="{
-                        height: 350,
-                        type: 'radialBar', 
-                        radialBar: {
-                            hollow: {
-                                size: '70%'
-                            }
-                        }
-                    }"
-                            [series]="[DHT11minavgmaxTempChartValue.min, DHT11minavgmaxTempChartValue.avg, DHT11minavgmaxTempChartValue.max]"
-                            [labels]="['Min-Temp','Avg-Temp','Max-Temp']" [plotOptions]="{
-                                radialBar: {
-                                    offsetY: -8,
-                                    startAngle: 0,
-                                    endAngle: 270,
-                                    hollow: {
-                                        margin: 5,
-                                        size: '20%',
-                                        background: 'transparent',
-                                        image: undefined
-                                    },
-                                    dataLabels: {
-                                        name: {
-                                            show: false
-                                        },
-                                    value: {
-                                        show: true
-                                    }
+                            height: 350,
+                            type: 'bar'
+                        }"
+                            [plotOptions]="{
+                            bar: {
+                                dataLabels: {
+                                    position: 'top'
                                 }
                             }
                         }"
-                            [colors]="['#1ab7ea', '#0084ff', '#39539E', '#0077B5']" [legend]="{
-                            show: true,
-                            floating: true,
-                            fontSize: '12px',
-                            position: 'left',
-                            offsetX: 10,
-                            offsetY: 8,
-                            labels: {
-                                useSeriesColors: true
-                            },
-                            markers: {
-                                size: 10
-                            },
-                            itemMargin: {
-                                horizontal: 2
+                            [series]="[{data : [DHT11minavgmaxTempChartValue.min, DHT11minavgmaxTempChartValue.avg, DHT11minavgmaxTempChartValue.max]}]"
+                            [xaxis]="{
+                            categories : ['Min-Temp','Avg-Temp','Max-Temp']
+                        }"
+                            [responsive]="[{
+                        breakpoint: 480,
+                        options: {
+                            legend: {
+                                show: true
                             }
-                        }"></apx-chart>
+                        }
+                    }]"></apx-chart>
                     </div>
                 </div>
                 <div class="col-lg">
                     <div class="card centre d16 shadow">
                         <div class="latest-value">
                             <h4>Latest DHT-11 Humidity</h4>
-                            <p>{{latestDHT11Humidity}} %</p>
+                            <p class="p1">{{latestDHT11Humidity}} %</p>
                         </div>
                         <apx-chart [chart]="{
-                        height: 350,
-                        type: 'radialBar', 
-                        radialBar: {
-                            hollow: {
-                                size: '70%'
-                            }
-                        }
-                    }"
-                            [series]="[DHT11minavgmaxHumidityChartValue.min, DHT11minavgmaxHumidityChartValue.avg, DHT11minavgmaxHumidityChartValue.max]"
-                            [labels]="['Min-Humidity','Avg-Humidity','Max-Humidity']" [plotOptions]="{
-                                radialBar: {
-                                    offsetY: -8,
-                                    startAngle: 0,
-                                    endAngle: 270,
-                                    hollow: {
-                                        margin: 5,
-                                        size: '30%',
-                                        background: 'transparent',
-                                        image: undefined
-                                    },
-                                    dataLabels: {
-                                        name: {
-                                            show: false
-                                        },
-                                    value: {
-                                        show: true
-                                    }
+                            height: 350,
+                            type: 'bar'
+                        }"
+                            [plotOptions]="{
+                            bar: {
+                                dataLabels: {
+                                    position: 'top'
                                 }
                             }
                         }"
-                            [colors]="['#1ab7ea', '#0084ff', '#39539E', '#0077B5']" [responsive]="[{
-                            breakpoint: 480,
-                            options: {
-                                legend: {
-                                    show: true
-                                }
+                            [series]="[{data : [DHT11minavgmaxHumidityChartValue.min, DHT11minavgmaxHumidityChartValue.avg, DHT11minavgmaxHumidityChartValue.max]}]"
+                            [xaxis]="{
+                            categories : ['Min-Humidity','Avg-Humidity','Max-Humidity']
+                        }"
+                            [responsive]="[{
+                        breakpoint: 480,
+                        options: {
+                            legend: {
+                                show: true
                             }
-                        }]"
-                            [legend]="{
-                            show: true,
-                            floating: true,
-                            fontSize: '12px',
-                            position: 'left',
-                            offsetX: 10,
-                            offsetY: 8,
-                            labels: {
-                                useSeriesColors: true
-                            },
-                            markers: {
-                                size: 10
-                            },
-                            itemMargin: {
-                                horizontal: 2
-                            }
-                        }"></apx-chart>
+                        }
+                    }]"></apx-chart>
                     </div>
                 </div>
             </div>
