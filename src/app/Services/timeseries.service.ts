@@ -9,8 +9,8 @@ import { Observable } from 'rxjs';
 export class TimeseriesService {
   constructor(private http: HttpClient) { }
 
-  public getDataByCompany(company: string): Observable<any> {
-     var requestURI = 'http://' + environment.timeseriesAPI_URL + ':' + environment.timeseriesAPI_PORT + '/timeseries/company/' + company + '/timeseries';
+  public getDataByCompanyLocationArea(company: string, location: string, area: string): Observable<any> {
+     var requestURI = 'http://' + environment.timeseriesAPI_URL + ':' + environment.timeseriesAPI_PORT + '/timeseries/v1/' + company + '/' + location +'/' + area;
     return this.http.get<any>(requestURI);
   }
 

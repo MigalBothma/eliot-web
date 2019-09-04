@@ -4,6 +4,7 @@ import { Observable, Subscribable, Subject } from 'rxjs';
 import 'chartjs-plugin-colorschemes';
 import * as moment from 'moment';
 import { ChartComponent } from 'ng-apexcharts';
+import { ContextService } from 'src/app/Services/context.service';
 
 @Component({
   selector: 'app-dashboard-static',
@@ -14,6 +15,14 @@ import { ChartComponent } from 'ng-apexcharts';
 export class DashboardStaticComponent implements OnInit {
   //@ViewChild('tempChart') tempChart : ChartComponent;
   public selectedLocation = new Subject();
+  public selectedArea = new Subject();
+
+  //UI Triggers
+  public showSpinner;
+  public showContent;
+
+  //ContextData
+  public contextData;
 
   //Areadata for selected Location
   public areadata;
@@ -44,60 +53,41 @@ export class DashboardStaticComponent implements OnInit {
 
   public chartData = [];
 
-  constructor(private tsService: TimeseriesService) { }
+  constructor(private tsService: TimeseriesService, private ctxService: ContextService) { }
 
   ngOnInit() {
-    this.tsService.getDataByCompany('Migal')
-      .subscribe(eventsLocationData => {
-        if (eventsLocationData) {
-          this.timeseriesData = eventsLocationData;
-          this.locations.next(Object.keys(eventsLocationData));
+    this.showSpinner = true;
 
-          Object.keys(eventsLocationData).forEach(location => {
-            let areaData = this.timeseriesData[location]["0"];
-            Object.keys(areaData).forEach(area => {
-              this.chartData.push(areaData);
-            });
-          });
+    this.ctxService.getContextByCompany('Migal')
+      .subscribe( _contextData => {
+        this.locations.next(Object.keys(_contextData[0]["locations"]));
+        this.contextData = _contextData[0];
 
-          //convert UTC to local time
-          this.chartData[0]["Study"]["timestamp"].forEach((timestamp, index) => {
-            this.chartData[0]["Study"]["timestamp"][index] = moment(timestamp).local().format();
-          });
-
-          this.DS18BtempChartValues = this.chartData[0]["Study"]["DS18B20-Temp"];
-          this.DHT11tempChartValues = this.chartData[0]["Study"]["DHT-11-Temp"];
-          this.humidityChartValues = this.chartData[0]["Study"]["DHT-11-Humidity"];
-          this.timestampValues = this.chartData[0]["Study"]["timestamp"];
-
-          //get Latest values
-          this.getLatestValues(this.chartData[0]);
-
-          //get Average, Min, Max
-          this.getMinMaxAverage(this.chartData[0]);      
+        if(this.contextData){
+          this.showSpinner = false;
         }
       });
   }
 
   public getLatestValues( chartData ){
-    this.latestTimestamp = chartData["Study"]["timestamp"][chartData["Study"]["timestamp"].length - 1];
-    this.latestDS18Temperature = chartData["Study"]["DS18B20-Temp"][chartData["Study"]["DS18B20-Temp"].length - 1];
-    this.latestDHT11Temperature = chartData["Study"]["DHT-11-Temp"][chartData["Study"]["DHT-11-Temp"].length - 1];
-    this.latestDHT11Humidity = chartData["Study"]["DHT-11-Humidity"][chartData["Study"]["DHT-11-Humidity"].length - 1];
+    this.latestTimestamp = chartData["timestamp"][chartData["timestamp"].length - 1];
+    this.latestDS18Temperature = chartData["DS18B20-Temp"][chartData["DS18B20-Temp"].length - 1];
+    this.latestDHT11Temperature = chartData["DHT-11-Temp"][chartData["DHT-11-Temp"].length - 1];
+    this.latestDHT11Humidity = chartData["DHT-11-Humidity"][chartData["DHT-11-Humidity"].length - 1];
   }
 
   public getMinMaxAverage( chartData ){
-    this.DS18BminavgmaxTempChartValue["min"] = this.getMin(this.chartData[0]["Study"]["DS18B20-Temp"]);
-    this.DS18BminavgmaxTempChartValue["avg"] = this.getAverage(this.chartData[0]["Study"]["DS18B20-Temp"]);
-    this.DS18BminavgmaxTempChartValue["max"] = this.getMax(this.chartData[0]["Study"]["DS18B20-Temp"]);
+    this.DS18BminavgmaxTempChartValue["min"] = this.getMin(chartData["DS18B20-Temp"]);
+    this.DS18BminavgmaxTempChartValue["avg"] = this.getAverage(chartData["DS18B20-Temp"]);
+    this.DS18BminavgmaxTempChartValue["max"] = this.getMax(chartData["DS18B20-Temp"]);
 
-    this.DHT11minavgmaxTempChartValue["min"] = this.getMin(this.chartData[0]["Study"]["DHT-11-Temp"]);
-    this.DHT11minavgmaxTempChartValue["avg"] = this.getAverage(this.chartData[0]["Study"]["DHT-11-Temp"]);
-    this.DHT11minavgmaxTempChartValue["max"] = this.getMax(this.chartData[0]["Study"]["DHT-11-Temp"]);
+    this.DHT11minavgmaxTempChartValue["min"] = this.getMin(chartData["DHT-11-Temp"]);
+    this.DHT11minavgmaxTempChartValue["avg"] = this.getAverage(chartData["DHT-11-Temp"]);
+    this.DHT11minavgmaxTempChartValue["max"] = this.getMax(chartData["DHT-11-Temp"]);
 
-    this.DHT11minavgmaxHumidityChartValue["min"] = this.getMin(this.chartData[0]["Study"]["DHT-11-Humidity"]);
-    this.DHT11minavgmaxHumidityChartValue["avg"] = this.getAverage(this.chartData[0]["Study"]["DHT-11-Humidity"]);
-    this.DHT11minavgmaxHumidityChartValue["max"] = this.getMax(this.chartData[0]["Study"]["DHT-11-Humidity"]);
+    this.DHT11minavgmaxHumidityChartValue["min"] = this.getMin(chartData["DHT-11-Humidity"]);
+    this.DHT11minavgmaxHumidityChartValue["avg"] = this.getAverage(chartData["DHT-11-Humidity"]);
+    this.DHT11minavgmaxHumidityChartValue["max"] = this.getMax(chartData["DHT-11-Humidity"]);
   }
 
   public getAverage(arr){
@@ -124,13 +114,50 @@ export class DashboardStaticComponent implements OnInit {
   }
 
   public setSelectedLocation(location){
-    debugger;
     this.selectedLocation = location;
 
     if(this.selectedLocation){
-      this.areadata = this.timeseriesData[location][0];
-      this.areasForSelected = Object.keys(this.timeseriesData[location][0]);
+      //this.areadata = this.contextData[location][0];
+      this.areasForSelected = Object.keys(this.contextData["locations"][location]);
     }
+  }
+
+  public setSelectedArea(area){
+    this.selectedArea = area;
+    this.showSpinner = true;
+    this.showContent = false;
+
+    if(this.selectedLocation && this.selectedArea){
+      this.getDashboardData(this.selectedLocation, this.selectedArea)
+    }
+  }
+
+  private getDashboardData(location, area){
+    this.tsService.getDataByCompanyLocationArea('Migal', location, area)
+      .subscribe(areaData => {
+        if (areaData) {
+          this.timeseriesData = areaData[area];
+
+          //convert UTC to local time
+          this.timeseriesData["timestamp"].forEach( (event, index) => {
+            this.timeseriesData["timestamp"][index] = moment(this.timeseriesData["timestamp"][index]).local().format();
+          });
+
+          this.DS18BtempChartValues = this.timeseriesData["DS18B20-Temp"];
+          this.DHT11tempChartValues = this.timeseriesData["DHT-11-Temp"];
+          this.humidityChartValues = this.timeseriesData["DHT-11-Humidity"];
+          this.timestampValues = this.timeseriesData["timestamp"];
+
+          //get Latest values
+          this.getLatestValues(this.timeseriesData);
+
+          //get Average, Min, Max
+          this.getMinMaxAverage(this.timeseriesData);
+          
+          this.showSpinner = false;
+          this.showContent = true;
+        }
+      });
   }
 
   ngAfterViewInit() {

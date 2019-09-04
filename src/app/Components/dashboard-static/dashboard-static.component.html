@@ -13,288 +13,297 @@
                 Area :
             </div>
             <ul class="nav nav-tabs" style="flex : 10;">
-                <li *ngFor="let area of areasForSelected" class="nav-link">{{area}}</li>
+                <li *ngFor="let area of areasForSelected" class="nav-link" (click)="setSelectedArea(area)">{{area}}</li>
             </ul>
         </div>
-        <ul *ngIf="!latestTimestamp.length > 0" class="nav nav-tabs" style="justify-content:center;">
+        <ul *ngIf="!contextData" class="nav nav-tabs" style="justify-content:center;">
             <p class="loadingdata">Loading Data ...</p>
         </ul>
     </div>
 
     <div class="canvas-container">
-        <div *ngIf="!latestTimestamp.length > 0" class="spinner">
+        <div *ngIf="showSpinner" class="spinner">
             <div class="logo-container">
                 <img src="/assets/ELIOT.png">
             </div>
         </div>
-        <div *ngIf="latestTimestamp.length > 0" class="row" style="width: 100%; margin-left: auto; margin-right: auto;">
-            <div class="col-sm">
-                <div class="card centre d16 shadow">
-                    <div class="latest-value">
-                        <div class="row justify-content-center" style="margin: auto;">
-                            <i class="material-icons" style="text-align:center;">
-                                alarm
-                            </i>
-                            <h4 style="text-align:center;">Latest Timestamp</h4>
+        <div *ngIf="showContent">
+            <div *ngIf="latestTimestamp.length > 0" class="row" style="width: 100%; margin-left: auto; margin-right: auto;">
+                <div class="col-sm">
+                    <div class="card centre d16 shadow">
+                        <div class="latest-value">
+                            <div class="row justify-content-center" style="margin: auto;">
+                                <i class="material-icons" style="text-align:center;">
+                                    alarm
+                                </i>
+                                <h4 style="text-align:center;">Latest Timestamp</h4>
+                            </div>
+                            <p>{{latestTimestamp | date : 'yyyy-MM-dd HH:mm:ss'}}</p>
                         </div>
-                        <p>{{latestTimestamp | date : 'yyyy-MM-dd HH:mm:ss'}}</p>
                     </div>
                 </div>
-            </div>
-            <div class="col-sm">
-                <div class="card centre d16 shadow">
-                    <div class="latest-value">
-                        <div class="row justify-content-center" style="margin: auto;">
-                            <i class="material-icons" style="text-align:center;">
-                                feedback
-                            </i>
-                            <h4 style="text-align:center;">Latest Alerts</h4>
+                <div class="col-sm">
+                    <div class="card centre d16 shadow">
+                        <div class="latest-value">
+                            <div class="row justify-content-center" style="margin: auto;">
+                                <i class="material-icons" style="text-align:center;">
+                                    feedback
+                                </i>
+                                <h4 style="text-align:center;">Latest Alerts</h4>
+                            </div>
+                            <p> None </p>
                         </div>
-                        <p> None </p>
                     </div>
                 </div>
             </div>
-        </div>
-        <div *ngIf="latestTimestamp.length > 0" class="row" style="width: 100%; margin-left: auto; margin-right: auto;">
-            <div class="col-lg">
-                <div class="card centre d16 shadow">
-                    <div class="latest-value">
-                        <h4>Latest DS18B20 Temp</h4>
-                        <p>{{latestDS18Temperature}} °C</p>
-                    </div>
-                    <apx-chart [chart]="{
-                    height: 350,
-                    type: 'radialBar', 
-                    radialBar: {
-                        hollow: {
-                            size: '70%'
-                        }
-                    }
-                }"
-                        [series]="[DS18BminavgmaxTempChartValue.min, DS18BminavgmaxTempChartValue.avg, DS18BminavgmaxTempChartValue.max]"
-                        [labels]="['Min-Temp','Avg-Temp','Max-Temp']" [plotOptions]="{
-                            radialBar: {
-                                offsetY: -6,
-                                startAngle: 0,
-                                endAngle: 270,
-                                hollow: {
-                                    margin: 5,
-                                    size: '30%',
-                                    background: 'transparent',
-                                    image: undefined
-                                },
-                                dataLabels: {
-                                    name: {
-                                        show: false
-                                    },
-                                value: {
-                                    show: true
-                                }
+            <div *ngIf="latestTimestamp.length > 0" class="row" style="width: 100%; margin-left: auto; margin-right: auto;">
+                <div class="col-lg">
+                    <div class="card centre d16 shadow">
+                        <div class="latest-value">
+                            <h4>Latest DS18B20 Temp</h4>
+                            <p>{{latestDS18Temperature}} °C</p>
+                        </div>
+                        <apx-chart [chart]="{
+                        height: 350,
+                        type: 'radialBar', 
+                        radialBar: {
+                            hollow: {
+                                size: '70%'
                             }
                         }
                     }"
-                        [colors]="['#1ab7ea', '#0084ff', '#39539E', '#0077B5']" [responsive]="[{
-                        breakpoint: 480,
-                        options: {
-                            legend: {
-                                show: true
-                            }
-                        }
-                    }]"
-                        [legend]="{
-                        show: true,
-                        floating: true,
-                        fontSize: '12px',
-                        position: 'left',
-                        offsetX: 10,
-                        offsetY: 8,
-                        labels: {
-                            useSeriesColors: true
-                        },
-                        markers: {
-                            size: 10
-                        },
-                        itemMargin: {
-                            horizontal: 2
-                        }
-                    }"></apx-chart>
-                </div>
-            </div>
-            <div class="col-lg">
-                <div class="card centre d16 shadow">
-                    <div class="latest-value">
-                        <h4>Latest DHT-11 Temp</h4>
-                        <p>{{latestDHT11Temperature}} °C</p>
-                    </div>
-                    <apx-chart [chart]="{
-                    height: 350,
-                    type: 'radialBar', 
-                    radialBar: {
-                        hollow: {
-                            size: '70%'
-                        }
-                    }
-                }"
-                        [series]="[DHT11minavgmaxTempChartValue.min, DHT11minavgmaxTempChartValue.avg, DHT11minavgmaxTempChartValue.max]"
-                        [labels]="['Min-Temp','Avg-Temp','Max-Temp']" [plotOptions]="{
-                            radialBar: {
-                                offsetY: -8,
-                                startAngle: 0,
-                                endAngle: 270,
-                                hollow: {
-                                    margin: 5,
-                                    size: '20%',
-                                    background: 'transparent',
-                                    image: undefined
-                                },
-                                dataLabels: {
-                                    name: {
-                                        show: false
+                            [series]="[DS18BminavgmaxTempChartValue.min, DS18BminavgmaxTempChartValue.avg, DS18BminavgmaxTempChartValue.max]"
+                            [labels]="['Min-Temp','Avg-Temp','Max-Temp']" [plotOptions]="{
+                                radialBar: {
+                                    offsetY: -6,
+                                    startAngle: 0,
+                                    endAngle: 270,
+                                    hollow: {
+                                        margin: 5,
+                                        size: '30%',
+                                        background: 'transparent',
+                                        image: undefined
                                     },
-                                value: {
+                                    dataLabels: {
+                                        name: {
+                                            show: false
+                                        },
+                                    value: {
+                                        show: true
+                                    }
+                                }
+                            }
+                        }"
+                            [colors]="['#1ab7ea', '#0084ff', '#39539E', '#0077B5']" [responsive]="[{
+                            breakpoint: 480,
+                            options: {
+                                legend: {
                                     show: true
                                 }
                             }
+                        }]"
+                            [legend]="{
+                            show: true,
+                            floating: true,
+                            fontSize: '12px',
+                            position: 'left',
+                            offsetX: 10,
+                            offsetY: 8,
+                            labels: {
+                                useSeriesColors: true
+                            },
+                            markers: {
+                                size: 10
+                            },
+                            itemMargin: {
+                                horizontal: 2
+                            }
+                        }"></apx-chart>
+                    </div>
+                </div>
+                <div class="col-lg">
+                    <div class="card centre d16 shadow">
+                        <div class="latest-value">
+                            <h4>Latest DHT-11 Temp</h4>
+                            <p>{{latestDHT11Temperature}} °C</p>
+                        </div>
+                        <apx-chart [chart]="{
+                        height: 350,
+                        type: 'radialBar', 
+                        radialBar: {
+                            hollow: {
+                                size: '70%'
+                            }
                         }
                     }"
-                        [colors]="['#1ab7ea', '#0084ff', '#39539E', '#0077B5']" [legend]="{
-                        show: true,
-                        floating: true,
-                        fontSize: '12px',
-                        position: 'left',
-                        offsetX: 10,
-                        offsetY: 8,
-                        labels: {
-                            useSeriesColors: true
-                        },
-                        markers: {
-                            size: 10
-                        },
-                        itemMargin: {
-                            horizontal: 2
-                        }
-                    }"></apx-chart>
-                </div>
-            </div>
-            <div class="col-lg">
-                <div class="card centre d16 shadow">
-                    <div class="latest-value">
-                        <h4>Latest DHT-11 Humidity</h4>
-                        <p>{{latestDHT11Humidity}} %</p>
-                    </div>
-                    <apx-chart [chart]="{
-                    height: 350,
-                    type: 'radialBar', 
-                    radialBar: {
-                        hollow: {
-                            size: '70%'
-                        }
-                    }
-                }"
-                        [series]="[DHT11minavgmaxHumidityChartValue.min, DHT11minavgmaxHumidityChartValue.avg, DHT11minavgmaxHumidityChartValue.max]"
-                        [labels]="['Min-Humidity','Avg-Humidity','Max-Humidity']" [plotOptions]="{
-                            radialBar: {
-                                offsetY: -8,
-                                startAngle: 0,
-                                endAngle: 270,
-                                hollow: {
-                                    margin: 5,
-                                    size: '30%',
-                                    background: 'transparent',
-                                    image: undefined
-                                },
-                                dataLabels: {
-                                    name: {
-                                        show: false
+                            [series]="[DHT11minavgmaxTempChartValue.min, DHT11minavgmaxTempChartValue.avg, DHT11minavgmaxTempChartValue.max]"
+                            [labels]="['Min-Temp','Avg-Temp','Max-Temp']" [plotOptions]="{
+                                radialBar: {
+                                    offsetY: -8,
+                                    startAngle: 0,
+                                    endAngle: 270,
+                                    hollow: {
+                                        margin: 5,
+                                        size: '20%',
+                                        background: 'transparent',
+                                        image: undefined
                                     },
-                                value: {
+                                    dataLabels: {
+                                        name: {
+                                            show: false
+                                        },
+                                    value: {
+                                        show: true
+                                    }
+                                }
+                            }
+                        }"
+                            [colors]="['#1ab7ea', '#0084ff', '#39539E', '#0077B5']" [legend]="{
+                            show: true,
+                            floating: true,
+                            fontSize: '12px',
+                            position: 'left',
+                            offsetX: 10,
+                            offsetY: 8,
+                            labels: {
+                                useSeriesColors: true
+                            },
+                            markers: {
+                                size: 10
+                            },
+                            itemMargin: {
+                                horizontal: 2
+                            }
+                        }"></apx-chart>
+                    </div>
+                </div>
+                <div class="col-lg">
+                    <div class="card centre d16 shadow">
+                        <div class="latest-value">
+                            <h4>Latest DHT-11 Humidity</h4>
+                            <p>{{latestDHT11Humidity}} %</p>
+                        </div>
+                        <apx-chart [chart]="{
+                        height: 350,
+                        type: 'radialBar', 
+                        radialBar: {
+                            hollow: {
+                                size: '70%'
+                            }
+                        }
+                    }"
+                            [series]="[DHT11minavgmaxHumidityChartValue.min, DHT11minavgmaxHumidityChartValue.avg, DHT11minavgmaxHumidityChartValue.max]"
+                            [labels]="['Min-Humidity','Avg-Humidity','Max-Humidity']" [plotOptions]="{
+                                radialBar: {
+                                    offsetY: -8,
+                                    startAngle: 0,
+                                    endAngle: 270,
+                                    hollow: {
+                                        margin: 5,
+                                        size: '30%',
+                                        background: 'transparent',
+                                        image: undefined
+                                    },
+                                    dataLabels: {
+                                        name: {
+                                            show: false
+                                        },
+                                    value: {
+                                        show: true
+                                    }
+                                }
+                            }
+                        }"
+                            [colors]="['#1ab7ea', '#0084ff', '#39539E', '#0077B5']" [responsive]="[{
+                            breakpoint: 480,
+                            options: {
+                                legend: {
                                     show: true
                                 }
                             }
-                        }
-                    }"
-                        [colors]="['#1ab7ea', '#0084ff', '#39539E', '#0077B5']" [responsive]="[{
-                        breakpoint: 480,
-                        options: {
-                            legend: {
-                                show: true
+                        }]"
+                            [legend]="{
+                            show: true,
+                            floating: true,
+                            fontSize: '12px',
+                            position: 'left',
+                            offsetX: 10,
+                            offsetY: 8,
+                            labels: {
+                                useSeriesColors: true
+                            },
+                            markers: {
+                                size: 10
+                            },
+                            itemMargin: {
+                                horizontal: 2
                             }
-                        }
-                    }]"
-                        [legend]="{
-                        show: true,
-                        floating: true,
-                        fontSize: '12px',
-                        position: 'left',
-                        offsetX: 10,
-                        offsetY: 8,
-                        labels: {
-                            useSeriesColors: true
-                        },
-                        markers: {
-                            size: 10
-                        },
-                        itemMargin: {
-                            horizontal: 2
-                        }
-                    }"></apx-chart>
-                </div>
-            </div>
-        </div>
-        <div *ngIf="latestTimestamp.length > 0" class="row" style="width: 100%; margin-left: auto; margin-right: auto;">
-            <div class="col-lg" style="padding-top: 16px;">
-                <div class="card shadow">
-                    <div *ngIf='timestampValues' class="card-body">
-                        <h4 class="card-title">Temperature</h4>
-                        <apx-chart [series]="[{name : 'DHT-11-Temp', data: DHT11tempChartValues},{name : 'DS18B20-Temp', data : DS18BtempChartValues}]"
-                            [xaxis]="{categories : timestampValues, type: 'datetime'}" [yaxis]="{ min: DS18BminavgmaxTempChartValue.min, max: DS18BminavgmaxTempChartValue.max }"
-                            [stroke]="{
-                                show: true,
-                                width: 1,
-                                dashArray: 0    
-                            }"
-                            [chart]="{
-                                type: 'line',
-                                stacked: false,
-                                height: 350,
-                                zoom: {
-                                  type: 'x',
-                                  enabled: true
-                                },
-                                toolbar: {
-                                  autoSelected: 'zoom'
-                                }
-                              }"
-                            [title]="Temperature"></apx-chart>
+                        }"></apx-chart>
                     </div>
                 </div>
             </div>
-            <div class="col-lg" style="padding-top: 16px;">
-                <div class="card shadow">
-                    <div *ngIf='timestampValues' class="card-body">
-                        <h4 class="card-title">Humidity</h4>
-                        <apx-chart [series]="[{name : 'DHT-11-Humidity', data : humidityChartValues}]" [xaxis]="{ categories : timestampValues, type: 'datetime' }"
-                            [yaxis]="{ min: DHT11minavgmaxHumidityChartValue.min, max: DHT11minavgmaxHumidityChartValue.max }"
-                            [stroke]="{
-                                show: true,
-                                curve: 'smooth',
-                                width: 1,
-                                dashArray: 0    
-                            }"
-                            [chart]="{
-                                type: 'area',
-                                stacked: false,
-                                height: 350,
-                                zoom: {
-                                  type: 'x',
-                                  enabled: true
-                                },
-                                toolbar: {
-                                  autoSelected: 'zoom'
-                                }
-                              }"
-                            [title]="Humidity">
-                        </apx-chart>
+            <div *ngIf="latestTimestamp.length > 0" class="row" style="width: 100%; margin-left: auto; margin-right: auto;">
+                <div class="col-lg" style="padding-top: 16px;">
+                    <div class="card shadow">
+                        <div *ngIf='timestampValues' class="card-body">
+                            <h4 class="card-title">Temperature</h4>
+                            <apx-chart [series]="[{name : 'DHT-11-Temp', data: DHT11tempChartValues},{name : 'DS18B20-Temp', data : DS18BtempChartValues}]"
+                                [xaxis]="{categories : timestampValues, type: 'datetime'}" [yaxis]="{ min: DHT11minavgmaxTempChartValue.min - 2, max: DHT11minavgmaxTempChartValue.max + 2 }"
+                                [stroke]="{
+                                    show: true,
+                                    width: 1,
+                                    dashArray: 0    
+                                }"
+                                [chart]="{
+                                    type: 'line',
+                                    stacked: false,
+                                    height: 350,
+                                    zoom: {
+                                      type: 'x',
+                                      enabled: true
+                                    },
+                                    toolbar: {
+                                      autoSelected: 'zoom'
+                                    }
+                                  }"
+                                [title]="Temperature" [tooltip]="{
+                                    x: { format : 'yyyy-MM-dd hh:mm:ss' }
+                                }"></apx-chart>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg" style="padding-top: 16px;">
+                    <div class="card shadow">
+                        <div *ngIf='timestampValues' class="card-body">
+                            <h4 class="card-title">Humidity</h4>
+                            <apx-chart [series]="[{name : 'DHT-11-Humidity', data : humidityChartValues}]" [xaxis]="{ categories : timestampValues, type: 'datetime' }"
+                                [yaxis]="{ min: DHT11minavgmaxHumidityChartValue.min - 1, max: DHT11minavgmaxHumidityChartValue.max + 1 }"
+                                [dataLabels]="{
+                                    enabled: false
+                                }"
+                                [stroke]="{
+                                    show: true,
+                                    curve: 'smooth',
+                                    width: 1,
+                                    dashArray: 0    
+                                }"
+                                [chart]="{
+                                    type: 'area',
+                                    stacked: false,
+                                    height: 350,
+                                    zoom: {
+                                      type: 'x',
+                                      enabled: true
+                                    },
+                                    toolbar: {
+                                      autoSelected: 'zoom'
+                                    }
+                                  }"
+                                [title]="Humidity" [tooltip]="{
+                                    x: { format : 'yyyy-MM-dd hh:mm:ss' }
+                                }">
+                            </apx-chart>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -31,6 +31,7 @@
 .canvas-container {
     width: 80%;
     margin: auto;
+    padding-bottom: 32px;
 }
 
 .areaHeading {
@@ -101,11 +102,11 @@
 
 .logo-container {
     position: absolute;
-    height: calc(100vh - 166px);
+    height: calc(100vh - 140px);
     width: 100vw;
     padding: 0px;
     z-index: 1;
-    top: 66px;
+    top: 70px;
     left: 0px;
 }
 
