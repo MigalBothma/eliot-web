@@ -1,10 +1,12 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { TimeseriesService } from '../../Services/timeseries.service';
-import { Observable, Subscribable, Subject, timer } from 'rxjs';
+import { Observable, Subscribable, Subject, timer, Subscriber } from 'rxjs';
 import 'chartjs-plugin-colorschemes';
 import * as moment from 'moment';
 import { ChartComponent } from 'ng-apexcharts';
 import { ContextService } from 'src/app/Services/context.service';
+import { debug } from 'util';
+import { subscribe } from 'graphql';
 
 @Component({
   selector: 'app-dashboard-static',
@@ -23,6 +25,7 @@ export class DashboardStaticComponent implements OnInit {
 
   //ContextData
   public contextData;
+  public poller;
 
   //Areadata for selected Location
   public areadata;
@@ -67,6 +70,26 @@ export class DashboardStaticComponent implements OnInit {
           this.showSpinner = false;
         }
       });
+  }
+
+  //DevExpress Radial Bar Chart Formatting
+  customizeTempText(arg) {
+    return arg.valueText + ' °C';
+  }
+
+  customizeHumidityText(arg) {
+    return arg.valueText + ' %';
+  }
+
+  getKeys(obj) {
+    return Object.keys(obj);
+  }
+
+  formatLegend(obj) {
+    obj[0].text = "min"
+    obj[1].text = "avg"
+    obj[2].text = "max"
+    return obj;
   }
 
   public getLatestValues(chartData) {
@@ -133,7 +156,12 @@ export class DashboardStaticComponent implements OnInit {
   }
 
   private getDashboardData(location, area) {
-    timer(0, 60000).subscribe(() => {
+    //Check if poller is defined && if poller is 'Subscriber' and !closed, we close it and open new one;
+    if( this.poller != undefined && !this.poller.closed){
+      this.poller.unsubscribe()
+    }
+
+    this.poller = timer(0, 60000).subscribe(() => {
       this.tsService.getDataByCompanyLocationArea('Migal', location, area)
         .subscribe(areaData => {
           if (areaData) {
@@ -160,6 +188,7 @@ export class DashboardStaticComponent implements OnInit {
           }
         });
     })
+    console.log(this.poller);
   }
 
   ngAfterViewInit() {

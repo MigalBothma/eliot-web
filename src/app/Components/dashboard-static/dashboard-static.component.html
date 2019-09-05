@@ -63,29 +63,13 @@
                             <h4>Latest DS18B20 Temp</h4>
                             <p class="p1">{{latestDS18Temperature}} °C</p>
                         </div>
-                        <apx-chart [chart]="{
-                                height: 350,
-                                type: 'bar'
-                            }"
-                            [plotOptions]="{
-                                bar: {
-                                    dataLabels: {
-                                        position: 'top'
-                                    }
-                                }
-                            }"
-                            [series]="[{data : [DS18BminavgmaxTempChartValue.min, DS18BminavgmaxTempChartValue.avg, DS18BminavgmaxTempChartValue.max]}]"
-                            [xaxis]="{
-                                categories : ['Min-Temp','Avg-Temp','Max-Temp']
-                            }"
-                            [responsive]="[{
-                            breakpoint: 480,
-                            options: {
-                                legend: {
-                                    show: true
-                                }
-                            }
-                        }]"></apx-chart>
+                        <dx-bar-gauge id="gauge" [startValue]="-10" [endValue]="50" [values]="[DS18BminavgmaxTempChartValue.min, DS18BminavgmaxTempChartValue.avg, DS18BminavgmaxTempChartValue.max]">
+                            <dxo-label [customizeText]="customizeTempText">
+                                <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+                            </dxo-label>
+                            <dxo-legend [customizeItems]="formatLegend" [visible]="true">
+                            </dxo-legend>
+                        </dx-bar-gauge>
                     </div>
                 </div>
                 <div class="col-lg">
@@ -94,29 +78,13 @@
                             <h4>Latest DHT-11 Temp</h4>
                             <p class="p1">{{latestDHT11Temperature}} °C</p>
                         </div>
-                        <apx-chart [chart]="{
-                            height: 350,
-                            type: 'bar'
-                        }"
-                            [plotOptions]="{
-                            bar: {
-                                dataLabels: {
-                                    position: 'top'
-                                }
-                            }
-                        }"
-                            [series]="[{data : [DHT11minavgmaxTempChartValue.min, DHT11minavgmaxTempChartValue.avg, DHT11minavgmaxTempChartValue.max]}]"
-                            [xaxis]="{
-                            categories : ['Min-Temp','Avg-Temp','Max-Temp']
-                        }"
-                            [responsive]="[{
-                        breakpoint: 480,
-                        options: {
-                            legend: {
-                                show: true
-                            }
-                        }
-                    }]"></apx-chart>
+                        <dx-bar-gauge id="gauge" [startValue]="-10" [endValue]="50" [values]="[DHT11minavgmaxTempChartValue.min, DHT11minavgmaxTempChartValue.avg, DHT11minavgmaxTempChartValue.max]">
+                            <dxo-label [customizeText]="customizeTempText">
+                                <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+                            </dxo-label>
+                            <dxo-legend [customizeItems]="formatLegend" [visible]="true">
+                            </dxo-legend>
+                        </dx-bar-gauge>
                     </div>
                 </div>
                 <div class="col-lg">
@@ -125,29 +93,13 @@
                             <h4>Latest DHT-11 Humidity</h4>
                             <p class="p1">{{latestDHT11Humidity}} %</p>
                         </div>
-                        <apx-chart [chart]="{
-                            height: 350,
-                            type: 'bar'
-                        }"
-                            [plotOptions]="{
-                            bar: {
-                                dataLabels: {
-                                    position: 'top'
-                                }
-                            }
-                        }"
-                            [series]="[{data : [DHT11minavgmaxHumidityChartValue.min, DHT11minavgmaxHumidityChartValue.avg, DHT11minavgmaxHumidityChartValue.max]}]"
-                            [xaxis]="{
-                            categories : ['Min-Humidity','Avg-Humidity','Max-Humidity']
-                        }"
-                            [responsive]="[{
-                        breakpoint: 480,
-                        options: {
-                            legend: {
-                                show: true
-                            }
-                        }
-                    }]"></apx-chart>
+                        <dx-bar-gauge id="gauge" [startValue]="0" [endValue]="100" [values]="[DHT11minavgmaxHumidityChartValue.min, DHT11minavgmaxHumidityChartValue.avg, DHT11minavgmaxHumidityChartValue.max]">
+                            <dxo-label [customizeText]="customizeHumidityText">
+                                <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+                            </dxo-label>
+                            <dxo-legend [customizeItems]="formatLegend" [visible]="true">
+                            </dxo-legend>
+                        </dx-bar-gauge>
                     </div>
                 </div>
             </div>

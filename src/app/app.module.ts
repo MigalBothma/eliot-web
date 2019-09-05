@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { GridsterModule } from 'angular-gridster2';
 import { NgApexchartsModule } from 'ng-apexcharts';
+import { DxButtonModule, DxBarGaugeModule, DxCheckBoxModule } from 'devextreme-angular';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -31,6 +32,7 @@ import { TimeseriesService } from './Services/timeseries.service';
     AppRoutingModule,
     GridsterModule,
     BrowserAnimationsModule,
+    DxButtonModule, DxBarGaugeModule, DxCheckBoxModule,
     MatIconModule, MatButtonModule, MatCardModule,
     NgApexchartsModule
   ],
