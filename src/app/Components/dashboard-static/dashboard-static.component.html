@@ -28,6 +28,7 @@
             </div>
         </div>
         <div *ngIf="showContent">
+            <!--Latest Timestamp & Latest Alerts-->
             <div *ngIf="latestTimestamp.length > 0" class="row" style="width: 100%; margin-left: auto; margin-right: auto;">
                 <div class="col-sm">
                     <div class="card centre d16 shadow">
@@ -56,6 +57,7 @@
                     </div>
                 </div>
             </div>
+            <!--DS18B20 & DHT-11-->
             <div *ngIf="latestTimestamp.length > 0" class="row" style="width: 100%; margin-left: auto; margin-right: auto;">
                 <div class="col-lg">
                     <div class="card centre d16 shadow">
@@ -63,7 +65,7 @@
                             <h4>Latest DS18B20 Temp</h4>
                             <p class="p1">{{latestDS18Temperature}} °C</p>
                         </div>
-                        <dx-bar-gauge id="gauge" [startValue]="-10" [endValue]="50" [values]="[DS18BminavgmaxTempChartValue.min, DS18BminavgmaxTempChartValue.avg, DS18BminavgmaxTempChartValue.max]">
+                        <dx-bar-gauge id="gauge" [startValue]="-10" [endValue]="50" [values]="[DS18B_minavgmax_temp_ChartValues.min, DS18B_minavgmax_temp_ChartValues.avg, DS18B_minavgmax_temp_ChartValues.max]">
                             <dxo-label [customizeText]="customizeTempText">
                                 <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
                             </dxo-label>
@@ -78,7 +80,7 @@
                             <h4>Latest DHT-11 Temp</h4>
                             <p class="p1">{{latestDHT11Temperature}} °C</p>
                         </div>
-                        <dx-bar-gauge id="gauge" [startValue]="-10" [endValue]="50" [values]="[DHT11minavgmaxTempChartValue.min, DHT11minavgmaxTempChartValue.avg, DHT11minavgmaxTempChartValue.max]">
+                        <dx-bar-gauge id="gauge" [startValue]="-10" [endValue]="50" [values]="[DHT11_minavgmax_temp_ChartValues.min, DHT11_minavgmax_temp_ChartValues.avg, DHT11_minavgmax_temp_ChartValues.max]">
                             <dxo-label [customizeText]="customizeTempText">
                                 <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
                             </dxo-label>
@@ -93,7 +95,7 @@
                             <h4>Latest DHT-11 Humidity</h4>
                             <p class="p1">{{latestDHT11Humidity}} %</p>
                         </div>
-                        <dx-bar-gauge id="gauge" [startValue]="0" [endValue]="100" [values]="[DHT11minavgmaxHumidityChartValue.min, DHT11minavgmaxHumidityChartValue.avg, DHT11minavgmaxHumidityChartValue.max]">
+                        <dx-bar-gauge id="gauge" [startValue]="0" [endValue]="100" [values]="[DHT11_minavgmax_humidity_ChartValues.min, DHT11_minavgmax_humidity_ChartValues.avg, DHT11_minavgmax_humidity_ChartValues.max]">
                             <dxo-label [customizeText]="customizeHumidityText">
                                 <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
                             </dxo-label>
@@ -103,13 +105,84 @@
                     </div>
                 </div>
             </div>
-            <div *ngIf="latestTimestamp.length > 0" class="row" style="width: 100%; margin-left: auto; margin-right: auto;">
+            <!--AC Fan 1 Gauges-->
+            <div *ngIf="latestACFan1Amps != ''" class="row" style="width: 100%; margin-left: auto; margin-right: auto;">
+                <div class="col-lg">
+                    <div class="card centre d16 shadow">
+                        <div class="latest-value">
+                            <h4>Latest Fan 1 Amps</h4>
+                            <p class="p1">{{latestACFan1Amps}}A</p>
+                        </div>
+                        <dx-bar-gauge id="gauge" [startValue]="0" [endValue]="AC_Fan1_minavgmax_amps_ChartValue.max"
+                            [values]="[AC_Fan1_minavgmax_amps_ChartValue.min, AC_Fan1_minavgmax_amps_ChartValue.avg, AC_Fan1_minavgmax_amps_ChartValue.max]">
+                            <dxo-label [customizeText]="customizeAmpText">
+                                <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+                            </dxo-label>
+                            <dxo-legend [customizeItems]="formatLegend" [visible]="true">
+                            </dxo-legend>
+                        </dx-bar-gauge>
+                    </div>
+                </div>
+                <div class="col-lg">
+                    <div class="card centre d16 shadow">
+                        <div class="latest-value">
+                            <h4>Latest Fan 1 Watts</h4>
+                            <p class="p1">{{latestACFan1Watts}}W</p>
+                        </div>
+                        <dx-bar-gauge id="gauge" [startValue]="0" [endValue]="AC_Fan1_minavgmax_watts_ChartValue.max"
+                            [values]="[AC_Fan1_minavgmax_watts_ChartValue.min, AC_Fan1_minavgmax_watts_ChartValue.avg, AC_Fan1_minavgmax_watts_ChartValue.max]">
+                            <dxo-label [customizeText]="customizeWattText">
+                                <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+                            </dxo-label>
+                            <dxo-legend [customizeItems]="formatLegend" [visible]="true">
+                            </dxo-legend>
+                        </dx-bar-gauge>
+                    </div>
+                </div>
+            </div>
+            <!--AC Compressor 1 Gauges-->
+            <div *ngIf="latestACFan1Amps != ''" class="row" style="width: 100%; margin-left: auto; margin-right: auto;">
+                <div class="col-lg">
+                    <div class="card centre d16 shadow">
+                        <div class="latest-value">
+                            <h4>Latest Compressor 1 Amps</h4>
+                            <p class="p1">{{latestACCompressor1Amps}}A</p>
+                        </div>
+                        <dx-bar-gauge id="gauge" [startValue]="0" [endValue]="AC_Compressor1_minavgmax_amps_ChartValue.max"
+                            [values]="[AC_Compressor1_minavgmax_amps_ChartValue.min, AC_Compressor1_minavgmax_amps_ChartValue.avg, AC_Compressor1_minavgmax_amps_ChartValue.max]">
+                            <dxo-label [customizeText]="customizeAmpText">
+                                <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+                            </dxo-label>
+                            <dxo-legend [customizeItems]="formatLegend" [visible]="true">
+                            </dxo-legend>
+                        </dx-bar-gauge>
+                    </div>
+                </div>
+                <div class="col-lg">
+                    <div class="card centre d16 shadow">
+                        <div class="latest-value">
+                            <h4>Latest Compressor 1 Watts</h4>
+                            <p class="p1">{{latestACCompressor1Watts}}W</p>
+                        </div>
+                        <dx-bar-gauge id="gauge" [startValue]="0" [endValue]="AC_Compressor1_minavgmax_watts_ChartValue.max"
+                            [values]="[AC_Compressor1_minavgmax_watts_ChartValue.min, AC_Compressor1_minavgmax_watts_ChartValue.avg, AC_Compressor1_minavgmax_watts_ChartValue.max]">
+                            <dxo-label [customizeText]="customizeWattText">
+                                <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+                            </dxo-label>
+                            <dxo-legend [customizeItems]="formatLegend" [visible]="true">
+                            </dxo-legend>
+                        </dx-bar-gauge>
+                    </div>
+                </div>
+            </div>
+            <!--Temp & Humidity Chart-->
+            <div *ngIf="DS18B_temp_ChartValues.length > 0" class="row" style="width: 100%; margin-left: auto; margin-right: auto;">
                 <div class="col-lg" style="padding-top: 16px;">
                     <div class="card shadow">
                         <div *ngIf='timestampValues' class="card-body">
                             <h4 class="card-title">Temperature</h4>
-                            <apx-chart [series]="[{name : 'DHT-11-Temp', data: DHT11tempChartValues},{name : 'DS18B20-Temp', data : DS18BtempChartValues}]"
-                                [xaxis]="{categories : timestampValues, type: 'datetime'}" [yaxis]="{ min: DHT11minavgmaxTempChartValue.min - 2, max: DHT11minavgmaxTempChartValue.max + 2 }"
+                            <apx-chart [series]="[{name : 'DHT-11-Temp', data: DHT11_temp_ChartValues},{name : 'DS18B20-Temp', data : DS18B_temp_ChartValues}]"
+                                [xaxis]="{categories : timestampValues, type: 'datetime'}" [yaxis]="{ min: DHT11_minavgmax_temp_ChartValues.min - 2, max: DHT11_minavgmax_temp_ChartValues.max + 2 }"
                                 [stroke]="{
                                     show: true,
                                     width: 1,
@@ -137,8 +210,8 @@
                     <div class="card shadow">
                         <div *ngIf='timestampValues' class="card-body">
                             <h4 class="card-title">Humidity</h4>
-                            <apx-chart [series]="[{name : 'DHT-11-Humidity', data : humidityChartValues}]" [xaxis]="{ categories : timestampValues, type: 'datetime' }"
-                                [yaxis]="{ min: DHT11minavgmaxHumidityChartValue.min - 1, max: DHT11minavgmaxHumidityChartValue.max + 1 }"
+                            <apx-chart [series]="[{name : 'DHT-11-Humidity', data : DHT11_humidity_ChartValues}]"
+                                [xaxis]="{ categories : timestampValues, type: 'datetime' }" [yaxis]="{ min: DHT11_minavgmax_humidity_ChartValues.min - 1, max: DHT11_minavgmax_humidity_ChartValues.max + 1 }"
                                 [dataLabels]="{
                                     enabled: false
                                 }"
@@ -163,6 +236,72 @@
                                 [title]="Humidity" [tooltip]="{
                                     x: { format : 'yyyy-MM-dd hh:mm:ss' }
                                 }">
+                            </apx-chart>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--AC Fan 1 & AC Compressor Chart-->
+            <div *ngIf="latestACFan1Amps != ''" class="row" style="width: 100%; margin-left: auto; margin-right: auto;">
+                <div class="col-lg" style="padding-top: 16px;">
+                    <div class="card shadow">
+                        <div *ngIf='timestampValues' class="card-body">
+                            <h4 class="card-title">Watts</h4>
+                            <apx-chart [series]="[{name : 'Fan1', data: AC_Fan1_watts_ChartValues},{name : 'Compressor1', data : AC_Compressor1_watts_ChartValues}]"
+                                [xaxis]="{categories : timestampValues, type: 'datetime'}" [yaxis]="{ min: AC_Fan1_minavgmax_watts_ChartValue.min, max: AC_Fan1_minavgmax_watts_ChartValue.max + 2 }"
+                                [stroke]="{
+                                        show: true,
+                                        width: 1,
+                                        dashArray: 0    
+                                    }"
+                                [chart]="{
+                                        type: 'line',
+                                        stacked: false,
+                                        height: 350,
+                                        zoom: {
+                                          type: 'x',
+                                          enabled: true
+                                        },
+                                        toolbar: {
+                                          autoSelected: 'zoom'
+                                        }
+                                      }"
+                                [title]="Temperature" [tooltip]="{
+                                        x: { format : 'yyyy-MM-dd hh:mm:ss' }
+                                    }"></apx-chart>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg" style="padding-top: 16px;">
+                    <div class="card shadow">
+                        <div *ngIf='timestampValues' class="card-body">
+                            <h4 class="card-title">Amps</h4>
+                            <apx-chart [series]="[{name : 'Fan1', data : AC_Fan1_amps_ChartValues},{name : 'Compressor1', data : AC_Compressor1_amps_ChartValues}]"
+                                [xaxis]="{ categories : timestampValues, type: 'datetime' }" [yaxis]="{ min: AC_Fan1_minavgmax_amps_ChartValue.min , max: AC_Fan1_minavgmax_amps_ChartValue.max + 2 }"
+                                [dataLabels]="{
+                                        enabled: false
+                                    }"
+                                [stroke]="{
+                                        show: true,
+                                        curve: 'smooth',
+                                        width: 1,
+                                        dashArray: 0    
+                                    }"
+                                [chart]="{
+                                        type: 'area',
+                                        stacked: false,
+                                        height: 350,
+                                        zoom: {
+                                          type: 'x',
+                                          enabled: true
+                                        },
+                                        toolbar: {
+                                          autoSelected: 'zoom'
+                                        }
+                                      }"
+                                [title]="Humidity" [tooltip]="{
+                                        x: { format : 'yyyy-MM-dd hh:mm:ss' }
+                                    }">
                             </apx-chart>
                         </div>
                     </div>

@@ -316,7 +316,7 @@ webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"background\">\r\n    <div class=\"card shadow context-bar\">\r\n        <div style=\"display: inline-flex;\">\r\n            <div *ngIf=\"locations | async\" class=\"areaHeading\" style=\"flex : 3;\">\r\n                Location :\r\n            </div>\r\n            <ul class=\"nav nav-tabs\" style=\"flex : 10;\">\r\n                <li *ngFor=\"let location of locations | async\" class=\"nav-link\" (click)=\"setSelectedLocation(location)\">{{location}}</li>\r\n            </ul>\r\n        </div>\r\n        <div *ngIf=\"areasForSelected\" style=\"display: inline-flex;\">\r\n            <div class=\"areaHeading\" style=\"flex : 3;\">\r\n                Area :\r\n            </div>\r\n            <ul class=\"nav nav-tabs\" style=\"flex : 10;\">\r\n                <li *ngFor=\"let area of areasForSelected\" class=\"nav-link\" (click)=\"setSelectedArea(area)\">{{area}}</li>\r\n            </ul>\r\n        </div>\r\n        <ul *ngIf=\"!contextData\" class=\"nav nav-tabs\" style=\"justify-content:center;\">\r\n            <p class=\"loadingdata\">Loading Data ...</p>\r\n        </ul>\r\n    </div>\r\n\r\n    <div class=\"canvas-container\">\r\n        <div *ngIf=\"showSpinner\" class=\"spinner\">\r\n            <div class=\"logo-container\">\r\n                <img src=\"/assets/ELIOT.png\">\r\n            </div>\r\n        </div>\r\n        <div *ngIf=\"showContent\">\r\n            <div *ngIf=\"latestTimestamp.length > 0\" class=\"row\" style=\"width: 100%; margin-left: auto; margin-right: auto;\">\r\n                <div class=\"col-sm\">\r\n                    <div class=\"card centre d16 shadow\">\r\n                        <div class=\"latest-value\">\r\n                            <div class=\"row justify-content-center\" style=\"margin: auto;\">\r\n                                <i class=\"material-icons\" style=\"text-align:center;\">\r\n                                    alarm\r\n                                </i>\r\n                                <h4 style=\"text-align:center;\">Latest Timestamp</h4>\r\n                            </div>\r\n                            <p class=\"p1\">{{latestTimestamp | date : 'yyyy-MM-dd HH:mm:ss'}}</p>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"col-sm\">\r\n                    <div class=\"card centre d16 shadow\">\r\n                        <div class=\"latest-value\">\r\n                            <div class=\"row justify-content-center\" style=\"margin: auto;\">\r\n                                <i class=\"material-icons\" style=\"text-align:center;\">\r\n                                    feedback\r\n                                </i>\r\n                                <h4 style=\"text-align:center;\">Latest Alerts</h4>\r\n                            </div>\r\n                            <p class=\"p1\"> None </p>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div *ngIf=\"latestTimestamp.length > 0\" class=\"row\" style=\"width: 100%; margin-left: auto; margin-right: auto;\">\r\n                <div class=\"col-lg\">\r\n                    <div class=\"card centre d16 shadow\">\r\n                        <div class=\"latest-value\">\r\n                            <h4>Latest DS18B20 Temp</h4>\r\n                            <p class=\"p1\">{{latestDS18Temperature}} °C</p>\r\n                        </div>\r\n                        <dx-bar-gauge id=\"gauge\" [startValue]=\"-10\" [endValue]=\"50\" [values]=\"[DS18BminavgmaxTempChartValue.min, DS18BminavgmaxTempChartValue.avg, DS18BminavgmaxTempChartValue.max]\">\r\n                            <dxo-label [customizeText]=\"customizeTempText\">\r\n                                <dxo-format type=\"fixedPoint\" [precision]=\"2\"></dxo-format>\r\n                            </dxo-label>\r\n                            <dxo-legend [customizeItems]=\"formatLegend\" [visible]=\"true\">\r\n                            </dxo-legend>\r\n                        </dx-bar-gauge>\r\n                    </div>\r\n                </div>\r\n                <div class=\"col-lg\">\r\n                    <div class=\"card centre d16 shadow\">\r\n                        <div class=\"latest-value\">\r\n                            <h4>Latest DHT-11 Temp</h4>\r\n                            <p class=\"p1\">{{latestDHT11Temperature}} °C</p>\r\n                        </div>\r\n                        <dx-bar-gauge id=\"gauge\" [startValue]=\"-10\" [endValue]=\"50\" [values]=\"[DHT11minavgmaxTempChartValue.min, DHT11minavgmaxTempChartValue.avg, DHT11minavgmaxTempChartValue.max]\">\r\n                            <dxo-label [customizeText]=\"customizeTempText\">\r\n                                <dxo-format type=\"fixedPoint\" [precision]=\"2\"></dxo-format>\r\n                            </dxo-label>\r\n                            <dxo-legend [customizeItems]=\"formatLegend\" [visible]=\"true\">\r\n                            </dxo-legend>\r\n                        </dx-bar-gauge>\r\n                    </div>\r\n                </div>\r\n                <div class=\"col-lg\">\r\n                    <div class=\"card centre d16 shadow\">\r\n                        <div class=\"latest-value\">\r\n                            <h4>Latest DHT-11 Humidity</h4>\r\n                            <p class=\"p1\">{{latestDHT11Humidity}} %</p>\r\n                        </div>\r\n                        <dx-bar-gauge id=\"gauge\" [startValue]=\"0\" [endValue]=\"100\" [values]=\"[DHT11minavgmaxHumidityChartValue.min, DHT11minavgmaxHumidityChartValue.avg, DHT11minavgmaxHumidityChartValue.max]\">\r\n                            <dxo-label [customizeText]=\"customizeHumidityText\">\r\n                                <dxo-format type=\"fixedPoint\" [precision]=\"2\"></dxo-format>\r\n                            </dxo-label>\r\n                            <dxo-legend [customizeItems]=\"formatLegend\" [visible]=\"true\">\r\n                            </dxo-legend>\r\n                        </dx-bar-gauge>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div *ngIf=\"latestTimestamp.length > 0\" class=\"row\" style=\"width: 100%; margin-left: auto; margin-right: auto;\">\r\n                <div class=\"col-lg\" style=\"padding-top: 16px;\">\r\n                    <div class=\"card shadow\">\r\n                        <div *ngIf='timestampValues' class=\"card-body\">\r\n                            <h4 class=\"card-title\">Temperature</h4>\r\n                            <apx-chart [series]=\"[{name : 'DHT-11-Temp', data: DHT11tempChartValues},{name : 'DS18B20-Temp', data : DS18BtempChartValues}]\"\r\n                                [xaxis]=\"{categories : timestampValues, type: 'datetime'}\" [yaxis]=\"{ min: DHT11minavgmaxTempChartValue.min - 2, max: DHT11minavgmaxTempChartValue.max + 2 }\"\r\n                                [stroke]=\"{\r\n                                    show: true,\r\n                                    width: 1,\r\n                                    dashArray: 0    \r\n                                }\"\r\n                                [chart]=\"{\r\n                                    type: 'line',\r\n                                    stacked: false,\r\n                                    height: 350,\r\n                                    zoom: {\r\n                                      type: 'x',\r\n                                      enabled: true\r\n                                    },\r\n                                    toolbar: {\r\n                                      autoSelected: 'zoom'\r\n                                    }\r\n                                  }\"\r\n                                [title]=\"Temperature\" [tooltip]=\"{\r\n                                    x: { format : 'yyyy-MM-dd hh:mm:ss' }\r\n                                }\"></apx-chart>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"col-lg\" style=\"padding-top: 16px;\">\r\n                    <div class=\"card shadow\">\r\n                        <div *ngIf='timestampValues' class=\"card-body\">\r\n                            <h4 class=\"card-title\">Humidity</h4>\r\n                            <apx-chart [series]=\"[{name : 'DHT-11-Humidity', data : humidityChartValues}]\" [xaxis]=\"{ categories : timestampValues, type: 'datetime' }\"\r\n                                [yaxis]=\"{ min: DHT11minavgmaxHumidityChartValue.min - 1, max: DHT11minavgmaxHumidityChartValue.max + 1 }\"\r\n                                [dataLabels]=\"{\r\n                                    enabled: false\r\n                                }\"\r\n                                [stroke]=\"{\r\n                                    show: true,\r\n                                    curve: 'smooth',\r\n                                    width: 1,\r\n                                    dashArray: 0    \r\n                                }\"\r\n                                [chart]=\"{\r\n                                    type: 'area',\r\n                                    stacked: false,\r\n                                    height: 350,\r\n                                    zoom: {\r\n                                      type: 'x',\r\n                                      enabled: true\r\n                                    },\r\n                                    toolbar: {\r\n                                      autoSelected: 'zoom'\r\n                                    }\r\n                                  }\"\r\n                                [title]=\"Humidity\" [tooltip]=\"{\r\n                                    x: { format : 'yyyy-MM-dd hh:mm:ss' }\r\n                                }\">\r\n                            </apx-chart>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>"
+module.exports = "<div id=\"background\">\r\n    <div class=\"card shadow context-bar\">\r\n        <div style=\"display: inline-flex;\">\r\n            <div *ngIf=\"locations | async\" class=\"areaHeading\" style=\"flex : 3;\">\r\n                Location :\r\n            </div>\r\n            <ul class=\"nav nav-tabs\" style=\"flex : 10;\">\r\n                <li *ngFor=\"let location of locations | async\" class=\"nav-link\" (click)=\"setSelectedLocation(location)\">{{location}}</li>\r\n            </ul>\r\n        </div>\r\n        <div *ngIf=\"areasForSelected\" style=\"display: inline-flex;\">\r\n            <div class=\"areaHeading\" style=\"flex : 3;\">\r\n                Area :\r\n            </div>\r\n            <ul class=\"nav nav-tabs\" style=\"flex : 10;\">\r\n                <li *ngFor=\"let area of areasForSelected\" class=\"nav-link\" (click)=\"setSelectedArea(area)\">{{area}}</li>\r\n            </ul>\r\n        </div>\r\n        <ul *ngIf=\"!contextData\" class=\"nav nav-tabs\" style=\"justify-content:center;\">\r\n            <p class=\"loadingdata\">Loading Data ...</p>\r\n        </ul>\r\n    </div>\r\n\r\n    <div class=\"canvas-container\">\r\n        <div *ngIf=\"showSpinner\" class=\"spinner\">\r\n            <div class=\"logo-container\">\r\n                <img src=\"/assets/ELIOT.png\">\r\n            </div>\r\n        </div>\r\n        <div *ngIf=\"showContent\">\r\n            <!--Latest Timestamp & Latest Alerts-->\r\n            <div *ngIf=\"latestTimestamp.length > 0\" class=\"row\" style=\"width: 100%; margin-left: auto; margin-right: auto;\">\r\n                <div class=\"col-sm\">\r\n                    <div class=\"card centre d16 shadow\">\r\n                        <div class=\"latest-value\">\r\n                            <div class=\"row justify-content-center\" style=\"margin: auto;\">\r\n                                <i class=\"material-icons\" style=\"text-align:center;\">\r\n                                    alarm\r\n                                </i>\r\n                                <h4 style=\"text-align:center;\">Latest Timestamp</h4>\r\n                            </div>\r\n                            <p class=\"p1\">{{latestTimestamp | date : 'yyyy-MM-dd HH:mm:ss'}}</p>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"col-sm\">\r\n                    <div class=\"card centre d16 shadow\">\r\n                        <div class=\"latest-value\">\r\n                            <div class=\"row justify-content-center\" style=\"margin: auto;\">\r\n                                <i class=\"material-icons\" style=\"text-align:center;\">\r\n                                    feedback\r\n                                </i>\r\n                                <h4 style=\"text-align:center;\">Latest Alerts</h4>\r\n                            </div>\r\n                            <p class=\"p1\"> None </p>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <!--DS18B20 & DHT-11-->\r\n            <div *ngIf=\"latestTimestamp.length > 0\" class=\"row\" style=\"width: 100%; margin-left: auto; margin-right: auto;\">\r\n                <div class=\"col-lg\">\r\n                    <div class=\"card centre d16 shadow\">\r\n                        <div class=\"latest-value\">\r\n                            <h4>Latest DS18B20 Temp</h4>\r\n                            <p class=\"p1\">{{latestDS18Temperature}} °C</p>\r\n                        </div>\r\n                        <dx-bar-gauge id=\"gauge\" [startValue]=\"-10\" [endValue]=\"50\" [values]=\"[DS18B_minavgmax_temp_ChartValues.min, DS18B_minavgmax_temp_ChartValues.avg, DS18B_minavgmax_temp_ChartValues.max]\">\r\n                            <dxo-label [customizeText]=\"customizeTempText\">\r\n                                <dxo-format type=\"fixedPoint\" [precision]=\"2\"></dxo-format>\r\n                            </dxo-label>\r\n                            <dxo-legend [customizeItems]=\"formatLegend\" [visible]=\"true\">\r\n                            </dxo-legend>\r\n                        </dx-bar-gauge>\r\n                    </div>\r\n                </div>\r\n                <div class=\"col-lg\">\r\n                    <div class=\"card centre d16 shadow\">\r\n                        <div class=\"latest-value\">\r\n                            <h4>Latest DHT-11 Temp</h4>\r\n                            <p class=\"p1\">{{latestDHT11Temperature}} °C</p>\r\n                        </div>\r\n                        <dx-bar-gauge id=\"gauge\" [startValue]=\"-10\" [endValue]=\"50\" [values]=\"[DHT11_minavgmax_temp_ChartValues.min, DHT11_minavgmax_temp_ChartValues.avg, DHT11_minavgmax_temp_ChartValues.max]\">\r\n                            <dxo-label [customizeText]=\"customizeTempText\">\r\n                                <dxo-format type=\"fixedPoint\" [precision]=\"2\"></dxo-format>\r\n                            </dxo-label>\r\n                            <dxo-legend [customizeItems]=\"formatLegend\" [visible]=\"true\">\r\n                            </dxo-legend>\r\n                        </dx-bar-gauge>\r\n                    </div>\r\n                </div>\r\n                <div class=\"col-lg\">\r\n                    <div class=\"card centre d16 shadow\">\r\n                        <div class=\"latest-value\">\r\n                            <h4>Latest DHT-11 Humidity</h4>\r\n                            <p class=\"p1\">{{latestDHT11Humidity}} %</p>\r\n                        </div>\r\n                        <dx-bar-gauge id=\"gauge\" [startValue]=\"0\" [endValue]=\"100\" [values]=\"[DHT11_minavgmax_humidity_ChartValues.min, DHT11_minavgmax_humidity_ChartValues.avg, DHT11_minavgmax_humidity_ChartValues.max]\">\r\n                            <dxo-label [customizeText]=\"customizeHumidityText\">\r\n                                <dxo-format type=\"fixedPoint\" [precision]=\"2\"></dxo-format>\r\n                            </dxo-label>\r\n                            <dxo-legend [customizeItems]=\"formatLegend\" [visible]=\"true\">\r\n                            </dxo-legend>\r\n                        </dx-bar-gauge>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <!--AC Fan 1 Gauges-->\r\n            <div *ngIf=\"latestACFan1Amps != ''\" class=\"row\" style=\"width: 100%; margin-left: auto; margin-right: auto;\">\r\n                <div class=\"col-lg\">\r\n                    <div class=\"card centre d16 shadow\">\r\n                        <div class=\"latest-value\">\r\n                            <h4>Latest Fan 1 Amps</h4>\r\n                            <p class=\"p1\">{{latestACFan1Amps}}A</p>\r\n                        </div>\r\n                        <dx-bar-gauge id=\"gauge\" [startValue]=\"0\" [endValue]=\"AC_Fan1_minavgmax_amps_ChartValue.max\"\r\n                            [values]=\"[AC_Fan1_minavgmax_amps_ChartValue.min, AC_Fan1_minavgmax_amps_ChartValue.avg, AC_Fan1_minavgmax_amps_ChartValue.max]\">\r\n                            <dxo-label [customizeText]=\"customizeAmpText\">\r\n                                <dxo-format type=\"fixedPoint\" [precision]=\"2\"></dxo-format>\r\n                            </dxo-label>\r\n                            <dxo-legend [customizeItems]=\"formatLegend\" [visible]=\"true\">\r\n                            </dxo-legend>\r\n                        </dx-bar-gauge>\r\n                    </div>\r\n                </div>\r\n                <div class=\"col-lg\">\r\n                    <div class=\"card centre d16 shadow\">\r\n                        <div class=\"latest-value\">\r\n                            <h4>Latest Fan 1 Watts</h4>\r\n                            <p class=\"p1\">{{latestACFan1Watts}}W</p>\r\n                        </div>\r\n                        <dx-bar-gauge id=\"gauge\" [startValue]=\"0\" [endValue]=\"AC_Fan1_minavgmax_watts_ChartValue.max\"\r\n                            [values]=\"[AC_Fan1_minavgmax_watts_ChartValue.min, AC_Fan1_minavgmax_watts_ChartValue.avg, AC_Fan1_minavgmax_watts_ChartValue.max]\">\r\n                            <dxo-label [customizeText]=\"customizeWattText\">\r\n                                <dxo-format type=\"fixedPoint\" [precision]=\"2\"></dxo-format>\r\n                            </dxo-label>\r\n                            <dxo-legend [customizeItems]=\"formatLegend\" [visible]=\"true\">\r\n                            </dxo-legend>\r\n                        </dx-bar-gauge>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <!--AC Compressor 1 Gauges-->\r\n            <div *ngIf=\"latestACFan1Amps != ''\" class=\"row\" style=\"width: 100%; margin-left: auto; margin-right: auto;\">\r\n                <div class=\"col-lg\">\r\n                    <div class=\"card centre d16 shadow\">\r\n                        <div class=\"latest-value\">\r\n                            <h4>Latest Compressor 1 Amps</h4>\r\n                            <p class=\"p1\">{{latestACCompressor1Amps}}A</p>\r\n                        </div>\r\n                        <dx-bar-gauge id=\"gauge\" [startValue]=\"0\" [endValue]=\"AC_Compressor1_minavgmax_amps_ChartValue.max\"\r\n                            [values]=\"[AC_Compressor1_minavgmax_amps_ChartValue.min, AC_Compressor1_minavgmax_amps_ChartValue.avg, AC_Compressor1_minavgmax_amps_ChartValue.max]\">\r\n                            <dxo-label [customizeText]=\"customizeAmpText\">\r\n                                <dxo-format type=\"fixedPoint\" [precision]=\"2\"></dxo-format>\r\n                            </dxo-label>\r\n                            <dxo-legend [customizeItems]=\"formatLegend\" [visible]=\"true\">\r\n                            </dxo-legend>\r\n                        </dx-bar-gauge>\r\n                    </div>\r\n                </div>\r\n                <div class=\"col-lg\">\r\n                    <div class=\"card centre d16 shadow\">\r\n                        <div class=\"latest-value\">\r\n                            <h4>Latest Compressor 1 Watts</h4>\r\n                            <p class=\"p1\">{{latestACCompressor1Watts}}W</p>\r\n                        </div>\r\n                        <dx-bar-gauge id=\"gauge\" [startValue]=\"0\" [endValue]=\"AC_Compressor1_minavgmax_watts_ChartValue.max\"\r\n                            [values]=\"[AC_Compressor1_minavgmax_watts_ChartValue.min, AC_Compressor1_minavgmax_watts_ChartValue.avg, AC_Compressor1_minavgmax_watts_ChartValue.max]\">\r\n                            <dxo-label [customizeText]=\"customizeWattText\">\r\n                                <dxo-format type=\"fixedPoint\" [precision]=\"2\"></dxo-format>\r\n                            </dxo-label>\r\n                            <dxo-legend [customizeItems]=\"formatLegend\" [visible]=\"true\">\r\n                            </dxo-legend>\r\n                        </dx-bar-gauge>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <!--Temp & Humidity Chart-->\r\n            <div *ngIf=\"DS18B_temp_ChartValues.length > 0\" class=\"row\" style=\"width: 100%; margin-left: auto; margin-right: auto;\">\r\n                <div class=\"col-lg\" style=\"padding-top: 16px;\">\r\n                    <div class=\"card shadow\">\r\n                        <div *ngIf='timestampValues' class=\"card-body\">\r\n                            <h4 class=\"card-title\">Temperature</h4>\r\n                            <apx-chart [series]=\"[{name : 'DHT-11-Temp', data: DHT11_temp_ChartValues},{name : 'DS18B20-Temp', data : DS18B_temp_ChartValues}]\"\r\n                                [xaxis]=\"{categories : timestampValues, type: 'datetime'}\" [yaxis]=\"{ min: DHT11_minavgmax_temp_ChartValues.min - 2, max: DHT11_minavgmax_temp_ChartValues.max + 2 }\"\r\n                                [stroke]=\"{\r\n                                    show: true,\r\n                                    width: 1,\r\n                                    dashArray: 0    \r\n                                }\"\r\n                                [chart]=\"{\r\n                                    type: 'line',\r\n                                    stacked: false,\r\n                                    height: 350,\r\n                                    zoom: {\r\n                                      type: 'x',\r\n                                      enabled: true\r\n                                    },\r\n                                    toolbar: {\r\n                                      autoSelected: 'zoom'\r\n                                    }\r\n                                  }\"\r\n                                [title]=\"Temperature\" [tooltip]=\"{\r\n                                    x: { format : 'yyyy-MM-dd hh:mm:ss' }\r\n                                }\"></apx-chart>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"col-lg\" style=\"padding-top: 16px;\">\r\n                    <div class=\"card shadow\">\r\n                        <div *ngIf='timestampValues' class=\"card-body\">\r\n                            <h4 class=\"card-title\">Humidity</h4>\r\n                            <apx-chart [series]=\"[{name : 'DHT-11-Humidity', data : DHT11_humidity_ChartValues}]\"\r\n                                [xaxis]=\"{ categories : timestampValues, type: 'datetime' }\" [yaxis]=\"{ min: DHT11_minavgmax_humidity_ChartValues.min - 1, max: DHT11_minavgmax_humidity_ChartValues.max + 1 }\"\r\n                                [dataLabels]=\"{\r\n                                    enabled: false\r\n                                }\"\r\n                                [stroke]=\"{\r\n                                    show: true,\r\n                                    curve: 'smooth',\r\n                                    width: 1,\r\n                                    dashArray: 0    \r\n                                }\"\r\n                                [chart]=\"{\r\n                                    type: 'area',\r\n                                    stacked: false,\r\n                                    height: 350,\r\n                                    zoom: {\r\n                                      type: 'x',\r\n                                      enabled: true\r\n                                    },\r\n                                    toolbar: {\r\n                                      autoSelected: 'zoom'\r\n                                    }\r\n                                  }\"\r\n                                [title]=\"Humidity\" [tooltip]=\"{\r\n                                    x: { format : 'yyyy-MM-dd hh:mm:ss' }\r\n                                }\">\r\n                            </apx-chart>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <!--AC Fan 1 & AC Compressor Chart-->\r\n            <div *ngIf=\"latestACFan1Amps != ''\" class=\"row\" style=\"width: 100%; margin-left: auto; margin-right: auto;\">\r\n                <div class=\"col-lg\" style=\"padding-top: 16px;\">\r\n                    <div class=\"card shadow\">\r\n                        <div *ngIf='timestampValues' class=\"card-body\">\r\n                            <h4 class=\"card-title\">Watts</h4>\r\n                            <apx-chart [series]=\"[{name : 'Fan1', data: AC_Fan1_watts_ChartValues},{name : 'Compressor1', data : AC_Compressor1_watts_ChartValues}]\"\r\n                                [xaxis]=\"{categories : timestampValues, type: 'datetime'}\" [yaxis]=\"{ min: AC_Fan1_minavgmax_watts_ChartValue.min, max: AC_Fan1_minavgmax_watts_ChartValue.max + 2 }\"\r\n                                [stroke]=\"{\r\n                                        show: true,\r\n                                        width: 1,\r\n                                        dashArray: 0    \r\n                                    }\"\r\n                                [chart]=\"{\r\n                                        type: 'line',\r\n                                        stacked: false,\r\n                                        height: 350,\r\n                                        zoom: {\r\n                                          type: 'x',\r\n                                          enabled: true\r\n                                        },\r\n                                        toolbar: {\r\n                                          autoSelected: 'zoom'\r\n                                        }\r\n                                      }\"\r\n                                [title]=\"Temperature\" [tooltip]=\"{\r\n                                        x: { format : 'yyyy-MM-dd hh:mm:ss' }\r\n                                    }\"></apx-chart>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"col-lg\" style=\"padding-top: 16px;\">\r\n                    <div class=\"card shadow\">\r\n                        <div *ngIf='timestampValues' class=\"card-body\">\r\n                            <h4 class=\"card-title\">Amps</h4>\r\n                            <apx-chart [series]=\"[{name : 'Fan1', data : AC_Fan1_amps_ChartValues},{name : 'Compressor1', data : AC_Compressor1_amps_ChartValues}]\"\r\n                                [xaxis]=\"{ categories : timestampValues, type: 'datetime' }\" [yaxis]=\"{ min: AC_Fan1_minavgmax_amps_ChartValue.min , max: AC_Fan1_minavgmax_amps_ChartValue.max + 2 }\"\r\n                                [dataLabels]=\"{\r\n                                        enabled: false\r\n                                    }\"\r\n                                [stroke]=\"{\r\n                                        show: true,\r\n                                        curve: 'smooth',\r\n                                        width: 1,\r\n                                        dashArray: 0    \r\n                                    }\"\r\n                                [chart]=\"{\r\n                                        type: 'area',\r\n                                        stacked: false,\r\n                                        height: 350,\r\n                                        zoom: {\r\n                                          type: 'x',\r\n                                          enabled: true\r\n                                        },\r\n                                        toolbar: {\r\n                                          autoSelected: 'zoom'\r\n                                        }\r\n                                      }\"\r\n                                [title]=\"Humidity\" [tooltip]=\"{\r\n                                        x: { format : 'yyyy-MM-dd hh:mm:ss' }\r\n                                    }\">\r\n                            </apx-chart>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>"
 
 /***/ }),
 
@@ -408,17 +408,34 @@ var DashboardStaticComponent = /** @class */ (function () {
         //@ViewChild('tempChart') tempChart : ChartComponent;
         this.selectedLocation = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
         this.selectedArea = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
-        this.DS18BtempChartValues = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
-        this.DHT11tempChartValues = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
-        this.humidityChartValues = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
+        //TIMESTAMP
         this.timestampValues = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
-        this.DS18BminavgmaxTempChartValue = {};
-        this.DHT11minavgmaxTempChartValue = {};
-        this.DHT11minavgmaxHumidityChartValue = {};
+        //TEMPERATURE
+        this.DS18B_temp_ChartValues = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
+        this.DHT11_temp_ChartValues = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
+        this.DS18B_minavgmax_temp_ChartValues = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
+        this.DHT11_minavgmax_temp_ChartValues = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
+        //HUMIDITY
+        this.DHT11_humidity_ChartValues = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
+        this.DHT11_minavgmax_humidity_ChartValues = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
+        //AC POWER
+        this.AC_Fan1_amps_ChartValues = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
+        this.AC_Fan1_watts_ChartValues = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
+        this.AC_Compressor1_amps_ChartValues = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
+        this.AC_Compressor1_watts_ChartValues = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
+        this.AC_Fan1_minavgmax_amps_ChartValue = {};
+        this.AC_Fan1_minavgmax_watts_ChartValue = {};
+        this.AC_Compressor1_minavgmax_amps_ChartValue = {};
+        this.AC_Compressor1_minavgmax_watts_ChartValue = {};
+        //LATEST VALUES
         this.latestTimestamp = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
         this.latestDS18Temperature = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
         this.latestDHT11Temperature = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
         this.latestDHT11Humidity = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
+        this.latestACFan1Amps = "";
+        this.latestACFan1Watts = "";
+        this.latestACCompressor1Amps = "";
+        this.latestACCompressor1Watts = "";
         this.chartTemperature = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
         this.chartLabels = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
         this.latestVals = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
@@ -441,6 +458,12 @@ var DashboardStaticComponent = /** @class */ (function () {
     DashboardStaticComponent.prototype.customizeTempText = function (arg) {
         return arg.valueText + ' °C';
     };
+    DashboardStaticComponent.prototype.customizeAmpText = function (arg) {
+        return arg.valueText + ' A';
+    };
+    DashboardStaticComponent.prototype.customizeWattText = function (arg) {
+        return arg.valueText + ' W';
+    };
     DashboardStaticComponent.prototype.customizeHumidityText = function (arg) {
         return arg.valueText + ' %';
     };
@@ -448,45 +471,10 @@ var DashboardStaticComponent = /** @class */ (function () {
         return Object.keys(obj);
     };
     DashboardStaticComponent.prototype.formatLegend = function (obj) {
-        obj[0].text = "min";
-        obj[1].text = "avg";
-        obj[2].text = "max";
+        obj[0].text = "min - " + obj[0].text;
+        obj[1].text = "avg - " + obj[1].text;
+        obj[2].text = "max - " + obj[2].text;
         return obj;
-    };
-    DashboardStaticComponent.prototype.getLatestValues = function (chartData) {
-        this.latestTimestamp = chartData["timestamp"][chartData["timestamp"].length - 1];
-        this.latestDS18Temperature = chartData["DS18B20-Temp"][chartData["DS18B20-Temp"].length - 1];
-        this.latestDHT11Temperature = chartData["DHT-11-Temp"][chartData["DHT-11-Temp"].length - 1];
-        this.latestDHT11Humidity = chartData["DHT-11-Humidity"][chartData["DHT-11-Humidity"].length - 1];
-    };
-    DashboardStaticComponent.prototype.getMinMaxAverage = function (chartData) {
-        this.DS18BminavgmaxTempChartValue["min"] = this.getMin(chartData["DS18B20-Temp"]);
-        this.DS18BminavgmaxTempChartValue["avg"] = this.getAverage(chartData["DS18B20-Temp"]);
-        this.DS18BminavgmaxTempChartValue["max"] = this.getMax(chartData["DS18B20-Temp"]);
-        this.DHT11minavgmaxTempChartValue["min"] = this.getMin(chartData["DHT-11-Temp"]);
-        this.DHT11minavgmaxTempChartValue["avg"] = this.getAverage(chartData["DHT-11-Temp"]);
-        this.DHT11minavgmaxTempChartValue["max"] = this.getMax(chartData["DHT-11-Temp"]);
-        this.DHT11minavgmaxHumidityChartValue["min"] = this.getMin(chartData["DHT-11-Humidity"]);
-        this.DHT11minavgmaxHumidityChartValue["avg"] = this.getAverage(chartData["DHT-11-Humidity"]);
-        this.DHT11minavgmaxHumidityChartValue["max"] = this.getMax(chartData["DHT-11-Humidity"]);
-    };
-    DashboardStaticComponent.prototype.getAverage = function (arr) {
-        var total = 0;
-        var avg = 0.0;
-        arr.forEach(function (value) {
-            total += value;
-        });
-        avg = total / arr.length;
-        return avg.toFixed(2);
-        ;
-    };
-    DashboardStaticComponent.prototype.getMax = function (arr) {
-        var max = Math.max.apply(Math, tslib__WEBPACK_IMPORTED_MODULE_0__["__spread"](arr));
-        return max;
-    };
-    DashboardStaticComponent.prototype.getMin = function (arr) {
-        var min = Math.min.apply(Math, tslib__WEBPACK_IMPORTED_MODULE_0__["__spread"](arr));
-        return min;
     };
     DashboardStaticComponent.prototype.setSelectedLocation = function (location) {
         this.selectedLocation = location;
@@ -508,6 +496,7 @@ var DashboardStaticComponent = /** @class */ (function () {
         //Check if poller is defined && if poller is 'Subscriber' and !closed, we close it and open new one;
         if (this.poller != undefined && !this.poller.closed) {
             this.poller.unsubscribe();
+            this.areaChanged();
         }
         this.poller = Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["timer"])(0, 60000).subscribe(function () {
             _this.tsService.getDataByCompanyLocationArea('Migal', location, area)
@@ -518,10 +507,18 @@ var DashboardStaticComponent = /** @class */ (function () {
                     _this.timeseriesData["timestamp"].forEach(function (event, index) {
                         _this.timeseriesData["timestamp"][index] = moment__WEBPACK_IMPORTED_MODULE_5__(_this.timeseriesData["timestamp"][index]).local().format();
                     });
-                    _this.DS18BtempChartValues = _this.timeseriesData["DS18B20-Temp"];
-                    _this.DHT11tempChartValues = _this.timeseriesData["DHT-11-Temp"];
-                    _this.humidityChartValues = _this.timeseriesData["DHT-11-Humidity"];
+                    _this.DS18B_temp_ChartValues = _this.timeseriesData["DS18B20-Temp"];
+                    _this.DHT11_temp_ChartValues = _this.timeseriesData["DHT-11-Temp"];
+                    _this.DHT11_humidity_ChartValues = _this.timeseriesData["DHT-11-Humidity"];
                     _this.timestampValues = _this.timeseriesData["timestamp"];
+                    if (_this.timeseriesData["AC-Fan1-Amps"]) {
+                        _this.AC_Fan1_amps_ChartValues = _this.timeseriesData["AC-Fan1-Amps"];
+                        _this.AC_Fan1_watts_ChartValues = _this.timeseriesData["AC-Fan1-Watts"];
+                    }
+                    if (_this.timeseriesData["AC-Compressor1-Watts"]) {
+                        _this.AC_Compressor1_amps_ChartValues = _this.timeseriesData["AC-Compressor1-Amps"];
+                        _this.AC_Compressor1_watts_ChartValues = _this.timeseriesData["AC-Compressor1-Watts"];
+                    }
                     //get Latest values
                     _this.getLatestValues(_this.timeseriesData);
                     //get Average, Min, Max
@@ -532,6 +529,75 @@ var DashboardStaticComponent = /** @class */ (function () {
             });
         });
         console.log(this.poller);
+    };
+    DashboardStaticComponent.prototype.getLatestValues = function (chartData) {
+        this.latestTimestamp = chartData["timestamp"][chartData["timestamp"].length - 1];
+        this.latestDS18Temperature = chartData["DS18B20-Temp"][chartData["DS18B20-Temp"].length - 1];
+        this.latestDHT11Temperature = chartData["DHT-11-Temp"][chartData["DHT-11-Temp"].length - 1];
+        this.latestDHT11Humidity = chartData["DHT-11-Humidity"][chartData["DHT-11-Humidity"].length - 1];
+        if (chartData["AC-Fan1-Amps"]) {
+            this.latestACFan1Amps = chartData["AC-Fan1-Amps"][chartData["AC-Fan1-Amps"].length - 1];
+            this.latestACFan1Watts = chartData["AC-Fan1-Watts"][chartData["AC-Fan1-Watts"].length - 1];
+        }
+        if (chartData["AC-Compressor1-Amps"]) {
+            this.latestACCompressor1Amps = chartData["AC-Compressor1-Amps"][chartData["AC-Compressor1-Amps"].length - 1];
+            this.latestACCompressor1Watts = chartData["AC-Compressor1-Watts"][chartData["AC-Compressor1-Watts"].length - 1];
+        }
+    };
+    DashboardStaticComponent.prototype.getMinMaxAverage = function (chartData) {
+        this.DS18B_minavgmax_temp_ChartValues["min"] = this.getMin(chartData["DS18B20-Temp"]);
+        this.DS18B_minavgmax_temp_ChartValues["avg"] = this.getAverage(chartData["DS18B20-Temp"]);
+        this.DS18B_minavgmax_temp_ChartValues["max"] = this.getMax(chartData["DS18B20-Temp"]);
+        this.DHT11_minavgmax_temp_ChartValues["min"] = this.getMin(chartData["DHT-11-Temp"]);
+        this.DHT11_minavgmax_temp_ChartValues["avg"] = this.getAverage(chartData["DHT-11-Temp"]);
+        this.DHT11_minavgmax_temp_ChartValues["max"] = this.getMax(chartData["DHT-11-Temp"]);
+        this.DHT11_minavgmax_humidity_ChartValues["min"] = this.getMin(chartData["DHT-11-Humidity"]);
+        this.DHT11_minavgmax_humidity_ChartValues["avg"] = this.getAverage(chartData["DHT-11-Humidity"]);
+        this.DHT11_minavgmax_humidity_ChartValues["max"] = this.getMax(chartData["DHT-11-Humidity"]);
+        if (chartData["AC-Fan1-Amps"]) {
+            this.AC_Fan1_minavgmax_amps_ChartValue["min"] = this.getMin(chartData["AC-Fan1-Amps"]);
+            this.AC_Fan1_minavgmax_amps_ChartValue["avg"] = this.getAverage(chartData["AC-Fan1-Amps"]);
+            this.AC_Fan1_minavgmax_amps_ChartValue["max"] = this.getMax(chartData["AC-Fan1-Amps"]);
+        }
+        if (chartData["AC-Fan1-Watts"]) {
+            this.AC_Fan1_minavgmax_watts_ChartValue["min"] = this.getMin(chartData["AC-Fan1-Watts"]);
+            this.AC_Fan1_minavgmax_watts_ChartValue["avg"] = this.getAverage(chartData["AC-Fan1-Watts"]);
+            this.AC_Fan1_minavgmax_watts_ChartValue["max"] = this.getMax(chartData["AC-Fan1-Watts"]);
+        }
+        if (chartData["AC-Compressor1-Amps"]) {
+            this.AC_Compressor1_minavgmax_amps_ChartValue["min"] = this.getMin(chartData["AC-Compressor1-Amps"]);
+            this.AC_Compressor1_minavgmax_amps_ChartValue["avg"] = this.getAverage(chartData["AC-Compressor1-Amps"]);
+            this.AC_Compressor1_minavgmax_amps_ChartValue["max"] = this.getMax(chartData["AC-Compressor1-Amps"]);
+        }
+        if (chartData["AC-Compressor1-Watts"]) {
+            this.AC_Compressor1_minavgmax_watts_ChartValue["min"] = this.getMin(chartData["AC-Compressor1-Watts"]);
+            this.AC_Compressor1_minavgmax_watts_ChartValue["avg"] = this.getAverage(chartData["AC-Compressor1-Watts"]);
+            this.AC_Compressor1_minavgmax_watts_ChartValue["max"] = this.getMax(chartData["AC-Compressor1-Watts"]);
+        }
+    };
+    DashboardStaticComponent.prototype.getAverage = function (arr) {
+        var total = 0;
+        var avg = 0.0;
+        arr.forEach(function (value) {
+            total += parseInt(value);
+        });
+        avg = total / arr.length;
+        return parseInt(avg.toFixed(2));
+        ;
+    };
+    DashboardStaticComponent.prototype.areaChanged = function () {
+        this.latestACCompressor1Amps = "";
+        this.latestACCompressor1Watts = "";
+        this.latestACFan1Amps = "";
+        this.latestACFan1Watts = "";
+    };
+    DashboardStaticComponent.prototype.getMax = function (arr) {
+        var max = Math.max.apply(Math, tslib__WEBPACK_IMPORTED_MODULE_0__["__spread"](arr));
+        return max;
+    };
+    DashboardStaticComponent.prototype.getMin = function (arr) {
+        var min = Math.min.apply(Math, tslib__WEBPACK_IMPORTED_MODULE_0__["__spread"](arr));
+        return min;
     };
     DashboardStaticComponent.prototype.ngAfterViewInit = function () {
     };
