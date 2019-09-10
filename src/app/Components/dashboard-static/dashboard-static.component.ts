@@ -21,8 +21,8 @@ export class DashboardStaticComponent implements OnInit {
   public showContent;
 
   //some
-  public Temperature = "Temperature";
-  public Humidity = "Humidity";
+  public Temperature : any;
+  public Humidity : any;
 
   //ContextData
   public contextData;
