@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  timeseriesAPI_URL : '34.90.188.17',
+  timeseriesAPI_URL : 'localhost',
   timeseriesAPI_PORT : '3000'
 };
 

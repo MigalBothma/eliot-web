@@ -1066,7 +1066,7 @@ __webpack_require__.r(__webpack_exports__);
 // The list of file replacements can be found in `angular.json`.
 const environment = {
     production: false,
-    timeseriesAPI_URL: '34.90.188.17',
+    timeseriesAPI_URL: 'localhost',
     timeseriesAPI_PORT: '3000'
 };
 /*
