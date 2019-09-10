@@ -20,6 +20,10 @@ export class DashboardStaticComponent implements OnInit {
   public showSpinner;
   public showContent;
 
+  //some
+  public Temperature = "Temperature";
+  public Humidity = "Humidity";
+
   //ContextData
   public contextData;
   public poller;

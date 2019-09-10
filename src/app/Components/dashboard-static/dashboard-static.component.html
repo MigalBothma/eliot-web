@@ -200,7 +200,7 @@
                                       autoSelected: 'zoom'
                                     }
                                   }"
-                                [title]="['Temperature']" [tooltip]="{
+                                [title]="Temperature" [tooltip]="{
                                     x: { format : 'yyyy-MM-dd hh:mm:ss' }
                                 }"></apx-chart>
                         </div>
@@ -211,7 +211,7 @@
                         <div *ngIf='timestampValues' class="card-body">
                             <h4 class="card-title">Humidity</h4>
                             <apx-chart [series]="[{name : 'DHT-11-Humidity', data : DHT11_humidity_ChartValues}]"
-                                [xaxis]="{ categories : timestampValues, type: 'datetime' }" [yaxis]="{ min: DHT11_minavgmax_humidity_ChartValues.min - 1, max: DHT11_minavgmax_humidity_ChartValues.max + 1 }"
+                                [xaxis]="{ categories : timestampValues, type: 'datetime' }" [yaxis]="{ min: DHT11_minavgmax_humidity_ChartValues.min, max: DHT11_minavgmax_humidity_ChartValues.max }"
                                 [dataLabels]="{
                                     enabled: false
                                 }"
@@ -233,7 +233,7 @@
                                       autoSelected: 'zoom'
                                     }
                                   }"
-                                [title]="['Humidity']" [tooltip]="{
+                                [title]="Humidity" [tooltip]="{
                                     x: { format : 'yyyy-MM-dd hh:mm:ss' }
                                 }">
                             </apx-chart>
@@ -248,7 +248,7 @@
                         <div *ngIf='timestampValues' class="card-body">
                             <h4 class="card-title">Watts</h4>
                             <apx-chart [series]="[{name : 'Fan1', data: AC_Fan1_watts_ChartValues},{name : 'Compressor1', data : AC_Compressor1_watts_ChartValues}]"
-                                [xaxis]="{categories : timestampValues, type: 'datetime'}" [yaxis]="{ min: AC_Fan1_minavgmax_watts_ChartValue.min, max: AC_Fan1_minavgmax_watts_ChartValue.max + 2 }"
+                                [xaxis]="{categories : timestampValues, type: 'datetime'}" [yaxis]="{ min: AC_Fan1_minavgmax_watts_ChartValue.min, max: AC_Fan1_minavgmax_watts_ChartValue.max }"
                                 [stroke]="{
                                         show: true,
                                         width: 1,
@@ -266,7 +266,7 @@
                                           autoSelected: 'zoom'
                                         }
                                       }"
-                                [title]="['Temperature']" [tooltip]="{
+                                [title]="Temperature" [tooltip]="{
                                         x: { format : 'yyyy-MM-dd hh:mm:ss' }
                                     }"></apx-chart>
                         </div>
@@ -277,7 +277,7 @@
                         <div *ngIf='timestampValues' class="card-body">
                             <h4 class="card-title">Amps</h4>
                             <apx-chart [series]="[{name : 'Fan1', data : AC_Fan1_amps_ChartValues},{name : 'Compressor1', data : AC_Compressor1_amps_ChartValues}]"
-                                [xaxis]="{ categories : timestampValues, type: 'datetime' }" [yaxis]="{ min: AC_Fan1_minavgmax_amps_ChartValue.min , max: AC_Fan1_minavgmax_amps_ChartValue.max + 2 }"
+                                [xaxis]="{ categories : timestampValues, type: 'datetime' }" [yaxis]="{ min: AC_Fan1_minavgmax_amps_ChartValue.min , max: AC_Fan1_minavgmax_amps_ChartValue.max }"
                                 [dataLabels]="{
                                         enabled: false
                                     }"
@@ -299,7 +299,7 @@
                                           autoSelected: 'zoom'
                                         }
                                       }"
-                                [title]="['Humidity']" [tooltip]="{
+                                [title]="Humidity" [tooltip]="{
                                         x: { format : 'yyyy-MM-dd hh:mm:ss' }
                                     }">
                             </apx-chart>
