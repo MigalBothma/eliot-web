@@ -1,12 +1,9 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TimeseriesService } from '../../Services/timeseries.service';
-import { Observable, Subscribable, Subject, timer, Subscriber } from 'rxjs';
+import { Subject, timer } from 'rxjs';
 import 'chartjs-plugin-colorschemes';
 import * as moment from 'moment';
-import { ChartComponent } from 'ng-apexcharts';
 import { ContextService } from 'src/app/Services/context.service';
-import { debug } from 'util';
-import { subscribe } from 'graphql';
 
 @Component({
   selector: 'app-dashboard-static',
@@ -35,32 +32,32 @@ export class DashboardStaticComponent implements OnInit {
   public timestampValues = new Subject();
 
   //TEMPERATURE
-  public DS18B_temp_ChartValues = new Subject();
-  public DHT11_temp_ChartValues = new Subject();
+  public DS18B_temp_ChartValues : any = new Subject();
+  public DHT11_temp_ChartValues : any = new Subject();
 
-  public DS18B_minavgmax_temp_ChartValues = new Subject();
-  public DHT11_minavgmax_temp_ChartValues = new Subject();
+  public DS18B_minavgmax_temp_ChartValues : any = new Subject();
+  public DHT11_minavgmax_temp_ChartValues : any = new Subject();
 
   //HUMIDITY
-  public DHT11_humidity_ChartValues = new Subject();
-  public DHT11_minavgmax_humidity_ChartValues = new Subject();
+  public DHT11_humidity_ChartValues : any = new Subject();
+  public DHT11_minavgmax_humidity_ChartValues : any = new Subject();
 
   //AC POWER
-  public AC_Fan1_amps_ChartValues = new Subject();
-  public AC_Fan1_watts_ChartValues = new Subject();
-  public AC_Compressor1_amps_ChartValues = new Subject();
-  public AC_Compressor1_watts_ChartValues = new Subject();
+  public AC_Fan1_amps_ChartValues : any = new Subject();
+  public AC_Fan1_watts_ChartValues : any = new Subject();
+  public AC_Compressor1_amps_ChartValues : any = new Subject();
+  public AC_Compressor1_watts_ChartValues : any = new Subject();
 
-  public AC_Fan1_minavgmax_amps_ChartValue = {};
-  public AC_Fan1_minavgmax_watts_ChartValue = {};
-  public AC_Compressor1_minavgmax_amps_ChartValue = {};
-  public AC_Compressor1_minavgmax_watts_ChartValue = {};
+  public AC_Fan1_minavgmax_amps_ChartValue : any = new Subject();
+  public AC_Fan1_minavgmax_watts_ChartValue : any = new Subject();
+  public AC_Compressor1_minavgmax_amps_ChartValue : any = new Subject();
+  public AC_Compressor1_minavgmax_watts_ChartValue : any = new Subject();
 
   //LATEST VALUES
-  public latestTimestamp = new Subject();
-  public latestDS18Temperature = new Subject();
-  public latestDHT11Temperature = new Subject();
-  public latestDHT11Humidity = new Subject();
+  public latestTimestamp : any = new Subject();
+  public latestDS18Temperature : any = new Subject();
+  public latestDHT11Temperature : any = new Subject();
+  public latestDHT11Humidity : any = new Subject();
 
   public latestACFan1Amps = "";
   public latestACFan1Watts = "";
@@ -69,11 +66,11 @@ export class DashboardStaticComponent implements OnInit {
 
   public timeseriesData;
 
-  public chartTemperature = new Subject();
-  public chartLabels = new Subject();
+  public chartTemperature : any = new Subject();
+  public chartLabels : any = new Subject();
 
-  public latestVals = new Subject();
-  public locations = new Subject();
+  public latestVals : any = new Subject();
+  public locations : any = new Subject();
   public location;
 
   public chartData = [];
