@@ -156,6 +156,7 @@ export class DashboardStaticComponent implements OnInit {
             this.timeseriesData = areaData[area];
 
             //convert UTC to local time
+            debugger;
             this.timeseriesData["timestamp"].forEach((event, index) => {
               this.timeseriesData["timestamp"][index] = moment(this.timeseriesData["timestamp"][index]).local().format();
             });
