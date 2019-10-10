@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { TimeseriesService } from '../../Services/timeseries.service';
-import { Subject, timer } from 'rxjs';
+import { Subject, timer, Observable, interval } from 'rxjs';
 import 'chartjs-plugin-colorschemes';
 import * as moment from 'moment';
 import { ContextService } from 'src/app/Services/context.service';
+import { delay } from 'q';
 
 @Component({
   selector: 'app-dashboard-static',
@@ -20,9 +21,10 @@ export class DashboardStaticComponent implements OnInit {
   public showSpinner;
   public showContent;
 
-  //some
+  //Some Observables
   public Temperature : any;
   public Humidity : any;
+  public secsDifference: any = new Subject();
 
   //ContextData
   public contextData;
@@ -156,10 +158,13 @@ export class DashboardStaticComponent implements OnInit {
             this.timeseriesData = areaData[area];
 
             //convert UTC to local time
-            debugger;
             this.timeseriesData["timestamp"].forEach((event, index) => {
               this.timeseriesData["timestamp"][index] = moment(this.timeseriesData["timestamp"][index]).local().format();
             });
+
+            debugger;
+            
+            interval(1000).subscribe( s => { this.secsDifference = Math.abs(moment(this.latestTimestamp).diff( moment().local().format() , 'seconds' ));})
 
             this.DS18B_temp_ChartValues = this.timeseriesData["DS18B20-Temp"];
             this.DHT11_temp_ChartValues = this.timeseriesData["DHT-11-Temp"];
@@ -181,6 +186,7 @@ export class DashboardStaticComponent implements OnInit {
             //get Average, Min, Max
             this.getMinMaxAverage(this.timeseriesData);
 
+            delay(200);
             this.showSpinner = false;
             this.showContent = true;
           }

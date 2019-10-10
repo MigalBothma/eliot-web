@@ -39,7 +39,7 @@
                                 </i>
                                 <h4 style="text-align:center;">Latest Timestamp</h4>
                             </div>
-                            <p class="p1">{{latestTimestamp | date : 'yyyy-MM-dd HH:mm:ss'}}</p>
+                            <p class="p1">{{latestTimestamp | date : 'yyyy-MM-dd HH:mm:ss'}} ({{secsDifference}}s ago)</p>
                         </div>
                     </div>
                 </div>
@@ -61,47 +61,68 @@
             <div *ngIf="latestTimestamp.length > 0" class="row" style="width: 100%; margin-left: auto; margin-right: auto;">
                 <div class="col-lg">
                     <div class="card centre d16 shadow">
-                        <div class="latest-value">
+                        <div class="latest-value" data-toggle="collapse" href="#collapse0">
                             <h4>Latest DS18B20 Temp</h4>
                             <p class="p1">{{latestDS18Temperature}} °C</p>
                         </div>
-                        <dx-bar-gauge id="gauge" [startValue]="-10" [endValue]="50" [values]="[DS18B_minavgmax_temp_ChartValues.min, DS18B_minavgmax_temp_ChartValues.avg, DS18B_minavgmax_temp_ChartValues.max]">
-                            <dxo-label [customizeText]="customizeTempText">
-                                <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
-                            </dxo-label>
-                            <dxo-legend [customizeItems]="formatLegend" [visible]="true">
-                            </dxo-legend>
-                        </dx-bar-gauge>
+                        <div id="collapse0" class="panel-collapse collapse">
+                            <div style="height: 300px; width: 100%;">
+                                <dx-bar-gauge id="gauge" [startValue]="-10" [endValue]="50" [values]="[DS18B_minavgmax_temp_ChartValues.min, DS18B_minavgmax_temp_ChartValues.avg, DS18B_minavgmax_temp_ChartValues.max]"
+                                    verticalAlignment="top" horizontalAlignment="center">
+                                    <dxo-label [customizeText]="customizeTempText">
+                                        <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+                                    </dxo-label>
+                                    <dxo-legend [customizeItems]="formatLegend" [visible]="true" verticalAlignment="bottom"
+                                        horizontalAlignment="center">
+                                    </dxo-legend>
+                                </dx-bar-gauge>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg">
                     <div class="card centre d16 shadow">
-                        <div class="latest-value">
+                        <button class="latest-value" data-toggle="collapse" href="#collapse1">
                             <h4>Latest DHT-11 Temp</h4>
                             <p class="p1">{{latestDHT11Temperature}} °C</p>
+                        </button>
+                        <div id="collapse1" class="panel-collapse collapse">
+                            <div style="height: 300px; width: 100%;">
+                                <dx-bar-gauge width="100%" height="100%" id="gauge" [startValue]="-10" [endValue]="50"
+                                    [values]="[DHT11_minavgmax_temp_ChartValues.min, DHT11_minavgmax_temp_ChartValues.avg, DHT11_minavgmax_temp_ChartValues.max]">
+                                    <dxo-label [customizeText]="customizeTempText">
+                                        <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+                                    </dxo-label>
+                                    <dxo-legend [customizeItems]="formatLegend" [visible]="true" verticalAlignment="bottom"
+                                        horizontalAlignment="center">
+                                    </dxo-legend>
+                                    <dx-resizable [minWidth]="380" [height]="300">
+                                    </dx-resizable>
+                                </dx-bar-gauge>
+                            </div>
                         </div>
-                        <dx-bar-gauge id="gauge" [startValue]="-10" [endValue]="50" [values]="[DHT11_minavgmax_temp_ChartValues.min, DHT11_minavgmax_temp_ChartValues.avg, DHT11_minavgmax_temp_ChartValues.max]">
-                            <dxo-label [customizeText]="customizeTempText">
-                                <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
-                            </dxo-label>
-                            <dxo-legend [customizeItems]="formatLegend" [visible]="true">
-                            </dxo-legend>
-                        </dx-bar-gauge>
                     </div>
                 </div>
                 <div class="col-lg">
                     <div class="card centre d16 shadow">
-                        <div class="latest-value">
+                        <button class="latest-value" data-toggle="collapse" href="#collapse2">
                             <h4>Latest DHT-11 Humidity</h4>
                             <p class="p1">{{latestDHT11Humidity}} %</p>
+                        </button>
+                        <div id="collapse2" class="panel-collapse collapse">
+                            <div style="height: 300px; width: 100%;">
+                                <dx-bar-gauge id="gauge" [startValue]="0" [endValue]="100" [values]="[DHT11_minavgmax_humidity_ChartValues.min, DHT11_minavgmax_humidity_ChartValues.avg, DHT11_minavgmax_humidity_ChartValues.max]">
+                                    <dxo-label [customizeText]="customizeHumidityText">
+                                        <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+                                    </dxo-label>
+                                    <dxo-legend [customizeItems]="formatLegend" [visible]="true" verticalAlignment="bottom"
+                                        horizontalAlignment="center">
+                                    </dxo-legend>
+                                    <dx-resizable [minWidth]="380" [height]="300">
+                                    </dx-resizable>
+                                </dx-bar-gauge>
+                            </div>
                         </div>
-                        <dx-bar-gauge id="gauge" [startValue]="0" [endValue]="100" [values]="[DHT11_minavgmax_humidity_ChartValues.min, DHT11_minavgmax_humidity_ChartValues.avg, DHT11_minavgmax_humidity_ChartValues.max]">
-                            <dxo-label [customizeText]="customizeHumidityText">
-                                <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
-                            </dxo-label>
-                            <dxo-legend [customizeItems]="formatLegend" [visible]="true">
-                            </dxo-legend>
-                        </dx-bar-gauge>
                     </div>
                 </div>
             </div>
@@ -109,34 +130,48 @@
             <div *ngIf="latestACFan1Amps != ''" class="row" style="width: 100%; margin-left: auto; margin-right: auto;">
                 <div class="col-lg">
                     <div class="card centre d16 shadow">
-                        <div class="latest-value">
+                        <button class="latest-value" data-toggle="collapse" href="#collapse3">
                             <h4>Latest Fan 1 Amps</h4>
                             <p class="p1">{{latestACFan1Amps}}A</p>
+                        </button>
+                        <div id="collapse3" class="panel-collapse collapse">
+                            <div style="height: 300px; width: 100%;">
+                                <dx-bar-gauge id="gauge" [startValue]="0" [endValue]="AC_Fan1_minavgmax_amps_ChartValue.max"
+                                    [values]="[AC_Fan1_minavgmax_amps_ChartValue.min, AC_Fan1_minavgmax_amps_ChartValue.avg, AC_Fan1_minavgmax_amps_ChartValue.max]">
+                                    <dxo-label [customizeText]="customizeAmpText">
+                                        <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+                                    </dxo-label>
+                                    <dxo-legend [customizeItems]="formatLegend" [visible]="true" verticalAlignment="bottom"
+                                        horizontalAlignment="center">
+                                    </dxo-legend>
+                                    <dx-resizable [minWidth]="380" [height]="300">
+                                    </dx-resizable>
+                                </dx-bar-gauge>
+                            </div>
                         </div>
-                        <dx-bar-gauge id="gauge" [startValue]="0" [endValue]="AC_Fan1_minavgmax_amps_ChartValue.max"
-                            [values]="[AC_Fan1_minavgmax_amps_ChartValue.min, AC_Fan1_minavgmax_amps_ChartValue.avg, AC_Fan1_minavgmax_amps_ChartValue.max]">
-                            <dxo-label [customizeText]="customizeAmpText">
-                                <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
-                            </dxo-label>
-                            <dxo-legend [customizeItems]="formatLegend" [visible]="true">
-                            </dxo-legend>
-                        </dx-bar-gauge>
                     </div>
                 </div>
                 <div class="col-lg">
                     <div class="card centre d16 shadow">
-                        <div class="latest-value">
+                        <button class="latest-value" data-toggle="collapse" href="#collapse4">
                             <h4>Latest Fan 1 Watts</h4>
                             <p class="p1">{{latestACFan1Watts}}W</p>
+                        </button>
+                        <div id="collapse4" class="panel-collapse collapse" style="min-height: 300px;">
+                            <div style="height: 300px; width: 100%;">
+                                <dx-bar-gauge id="gauge" [startValue]="0" [endValue]="AC_Fan1_minavgmax_watts_ChartValue.max"
+                                    [values]="[AC_Fan1_minavgmax_watts_ChartValue.min, AC_Fan1_minavgmax_watts_ChartValue.avg, AC_Fan1_minavgmax_watts_ChartValue.max]">
+                                    <dxo-label [customizeText]="customizeWattText">
+                                        <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+                                    </dxo-label>
+                                    <dxo-legend [customizeItems]="formatLegend" [visible]="true" verticalAlignment="bottom"
+                                        horizontalAlignment="center">
+                                    </dxo-legend>
+                                    <dx-resizable [minWidth]="380" [height]="300">
+                                    </dx-resizable>
+                                </dx-bar-gauge>
+                            </div>
                         </div>
-                        <dx-bar-gauge id="gauge" [startValue]="0" [endValue]="AC_Fan1_minavgmax_watts_ChartValue.max"
-                            [values]="[AC_Fan1_minavgmax_watts_ChartValue.min, AC_Fan1_minavgmax_watts_ChartValue.avg, AC_Fan1_minavgmax_watts_ChartValue.max]">
-                            <dxo-label [customizeText]="customizeWattText">
-                                <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
-                            </dxo-label>
-                            <dxo-legend [customizeItems]="formatLegend" [visible]="true">
-                            </dxo-legend>
-                        </dx-bar-gauge>
                     </div>
                 </div>
             </div>
@@ -144,34 +179,48 @@
             <div *ngIf="latestACFan1Amps != ''" class="row" style="width: 100%; margin-left: auto; margin-right: auto;">
                 <div class="col-lg">
                     <div class="card centre d16 shadow">
-                        <div class="latest-value">
+                        <button class="latest-value" data-toggle="collapse" href="#collapse5">
                             <h4>Latest Compressor 1 Amps</h4>
                             <p class="p1">{{latestACCompressor1Amps}}A</p>
+                        </button>
+                        <div id="collapse5" class="panel-collapse collapse" style="min-height: 300px;">
+                            <div style="height: 300px; width: 100%;">
+                                <dx-bar-gauge id="gauge" [startValue]="0" [endValue]="AC_Compressor1_minavgmax_amps_ChartValue.max"
+                                    [values]="[AC_Compressor1_minavgmax_amps_ChartValue.min, AC_Compressor1_minavgmax_amps_ChartValue.avg, AC_Compressor1_minavgmax_amps_ChartValue.max]">
+                                    <dxo-label [customizeText]="customizeAmpText">
+                                        <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+                                    </dxo-label>
+                                    <dxo-legend [customizeItems]="formatLegend" [visible]="true" verticalAlignment="bottom"
+                                        horizontalAlignment="center">
+                                    </dxo-legend>
+                                    <dx-resizable [minWidth]="380" [height]="300">
+                                    </dx-resizable>
+                                </dx-bar-gauge>
+                            </div>
                         </div>
-                        <dx-bar-gauge id="gauge" [startValue]="0" [endValue]="AC_Compressor1_minavgmax_amps_ChartValue.max"
-                            [values]="[AC_Compressor1_minavgmax_amps_ChartValue.min, AC_Compressor1_minavgmax_amps_ChartValue.avg, AC_Compressor1_minavgmax_amps_ChartValue.max]">
-                            <dxo-label [customizeText]="customizeAmpText">
-                                <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
-                            </dxo-label>
-                            <dxo-legend [customizeItems]="formatLegend" [visible]="true">
-                            </dxo-legend>
-                        </dx-bar-gauge>
                     </div>
                 </div>
                 <div class="col-lg">
                     <div class="card centre d16 shadow">
-                        <div class="latest-value">
+                        <button class="latest-value" data-toggle="collapse" href="#collapse6">
                             <h4>Latest Compressor 1 Watts</h4>
                             <p class="p1">{{latestACCompressor1Watts}}W</p>
+                        </button>
+                        <div id="collapse6" class="panel-collapse collapse" style="min-height: 300px;">
+                            <div style="height: 300px; width: 100%;">
+                                <dx-bar-gauge id="gauge" [startValue]="0" [endValue]="AC_Compressor1_minavgmax_watts_ChartValue.max"
+                                    [values]="[AC_Compressor1_minavgmax_watts_ChartValue.min, AC_Compressor1_minavgmax_watts_ChartValue.avg, AC_Compressor1_minavgmax_watts_ChartValue.max]">
+                                    <dxo-label [customizeText]="customizeWattText">
+                                        <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+                                    </dxo-label>
+                                    <dxo-legend [customizeItems]="formatLegend" [visible]="true" verticalAlignment="bottom"
+                                        horizontalAlignment="center">
+                                    </dxo-legend>
+                                    <dx-resizable [minWidth]="380" [height]="300">
+                                    </dx-resizable>
+                                </dx-bar-gauge>
+                            </div>
                         </div>
-                        <dx-bar-gauge id="gauge" [startValue]="0" [endValue]="AC_Compressor1_minavgmax_watts_ChartValue.max"
-                            [values]="[AC_Compressor1_minavgmax_watts_ChartValue.min, AC_Compressor1_minavgmax_watts_ChartValue.avg, AC_Compressor1_minavgmax_watts_ChartValue.max]">
-                            <dxo-label [customizeText]="customizeWattText">
-                                <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
-                            </dxo-label>
-                            <dxo-legend [customizeItems]="formatLegend" [visible]="true">
-                            </dxo-legend>
-                        </dx-bar-gauge>
                     </div>
                 </div>
             </div>

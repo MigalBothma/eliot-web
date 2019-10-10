@@ -1,6 +1,6 @@
 @media (min-width: 481px) and (max-width: 767px) {
     .logo-container img {
-        width: 50%;
+        width: 40%;
         position: absolute;
         right: 0;
         left: 0;
@@ -15,7 +15,7 @@
 
 @media (min-width: 320px) and (max-width: 480px) {
     .logo-container img {
-        width: 50%;
+        width: 40%;
         position: absolute;
         right: 0;
         left: 0;
@@ -45,6 +45,10 @@
     border-radius: 5px;
     border: 1px solid #ffffff70;
     width: 40%;
+}
+#gauge{
+    height: 300px;
+    margin: auto;
 }
 
 .areaHeading {
