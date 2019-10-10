@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { GridsterModule } from 'angular-gridster2';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { DxButtonModule, DxBarGaugeModule, DxCheckBoxModule, DxResizableModule } from 'devextreme-angular';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +17,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DashboardStaticComponent } from './Components/dashboard-static/dashboard-static.component';
 
 import { TimeseriesService } from './Services/timeseries.service';
+import { FeaturesComponent } from './Components/features/features.component';
 
 
 @NgModule({
@@ -24,12 +26,14 @@ import { TimeseriesService } from './Services/timeseries.service';
     NavbarComponent,
     HomeComponent,
     DashboardComponent,
-    DashboardStaticComponent
+    DashboardStaticComponent,
+    FeaturesComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    AngularFontAwesomeModule,
     GridsterModule,
     BrowserAnimationsModule,
     DxButtonModule, DxBarGaugeModule, DxCheckBoxModule, DxResizableModule,

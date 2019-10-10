@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './Components/home/home.component';
-import { DashboardComponent } from './Components/dashboard/dashboard.component';
+import { FeaturesComponent } from './Components/features/features.component';
 import { DashboardStaticComponent } from './Components/dashboard-static/dashboard-static.component';
 
 const routes: Routes = [
@@ -16,6 +16,11 @@ const routes: Routes = [
   { path: 'dashboard',
     pathMatch: 'full',
     component: DashboardStaticComponent
+  },
+  {
+    path: 'features',
+    pathMatch: 'full',
+    component: FeaturesComponent
   }
 ];
 

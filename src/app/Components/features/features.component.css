@@ -1,0 +1,25 @@
+.container-background{
+    position: absolute;
+    top: 0px;
+    height: 100vh;
+    width: 100vw;
+    padding: 0px;
+    margin: auto;
+    overflow: hidden;
+}
+
+.main-container{
+    padding-top : 10px; 
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto; 
+}
+
+.features-blue {
+    color:#fff;
+    background:linear-gradient(135deg, #172a74, #21a9af);
+    background-color:#184e8e;
+    padding-bottom:30px;
+  }
+  
+  
