@@ -18,6 +18,8 @@ import { DashboardStaticComponent } from './Components/dashboard-static/dashboar
 
 import { TimeseriesService } from './Services/timeseries.service';
 import { FeaturesComponent } from './Components/features/features.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 
 @NgModule({
@@ -38,7 +40,8 @@ import { FeaturesComponent } from './Components/features/features.component';
     BrowserAnimationsModule,
     DxButtonModule, DxBarGaugeModule, DxCheckBoxModule, DxResizableModule,
     MatIconModule, MatButtonModule, MatCardModule,
-    NgApexchartsModule
+    NgApexchartsModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [TimeseriesService],
   bootstrap: [AppComponent]

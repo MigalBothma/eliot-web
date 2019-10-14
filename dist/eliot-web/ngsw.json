@@ -1,0 +1,116 @@
+{
+  "configVersion": 1,
+  "timestamp": 1571083801393,
+  "index": "/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "urls": [
+        "/favicon.ico",
+        "/index.html",
+        "/main-es2015.3392e18c16bb1280bd9f.js",
+        "/main-es5.f505b9a10df5f991bb22.js",
+        "/polyfills-es2015.e4a1185e6871d06f842f.js",
+        "/polyfills-es5.da479429bfd39fbf99d9.js",
+        "/runtime-es2015.10a1f01eef199006286d.js",
+        "/runtime-es5.9ad22a88fcc70a015907.js",
+        "/scripts.fd6c3c34e708ceb641bd.js",
+        "/styles.8b23563f918772486cc6.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "urls": [
+        "/assets/About/Samples/processor-4347273_1920.jpg",
+        "/assets/About/compu-brain.png",
+        "/assets/About/compu-brain.psd",
+        "/assets/ELIOT.png",
+        "/assets/ELIOT.psd",
+        "/assets/ELIOT_1.png",
+        "/assets/ELIOT_favicon.ico",
+        "/assets/ELIOT_favicon.png",
+        "/assets/ELIOT_logo.png",
+        "/assets/ELIOT_logo_t.png",
+        "/assets/ELIoT_Eye.jpg",
+        "/assets/ELIoT_Eye.png",
+        "/assets/ELIoT_Eye.psd",
+        "/assets/Home_background.jpg",
+        "/assets/IOT1.png",
+        "/assets/icons/icon-128x128.png",
+        "/assets/icons/icon-144x144.png",
+        "/assets/icons/icon-152x152.png",
+        "/assets/icons/icon-192x192.png",
+        "/assets/icons/icon-384x384.png",
+        "/assets/icons/icon-512x512.png",
+        "/assets/icons/icon-72x72.png",
+        "/assets/icons/icon-96x96.png",
+        "/dxicons.71e4862eef32c43eca3f.woff2",
+        "/dxicons.dffa1b6f8175e126e4fd.woff",
+        "/dxicons.e7b052cb56375958973b.ttf"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "/assets/About/Samples/processor-4347273_1920.jpg": "3ec0888fc49b0e0927f4bb1190f3f1ff3a92a86e",
+    "/assets/About/compu-brain.png": "9c0a0f4b6bdcd9736fd749017291345cb31add61",
+    "/assets/About/compu-brain.psd": "f4bc7e2874d505870791b98833e20ccf1d8b6231",
+    "/assets/ELIOT.png": "fe36c51dff3dfdf1e24318e244e7703684e9a07a",
+    "/assets/ELIOT.psd": "50410cc746aca595f0cdd8fc1db03b1871365be8",
+    "/assets/ELIOT_1.png": "f1ced247331b95a092dc979b1dcb179ca6f8f5d5",
+    "/assets/ELIOT_favicon.ico": "ff885452b5e0fcfa4bc363f58a3589b137671c21",
+    "/assets/ELIOT_favicon.png": "9ceb3f5625e540bfb3718c8c97c4e5cdda28ab17",
+    "/assets/ELIOT_logo.png": "b285606f5fbbbdf61fde658dd785c11563a840b3",
+    "/assets/ELIOT_logo_t.png": "108c3817c1c4df19ed6e16bc54b17395a402674b",
+    "/assets/ELIoT_Eye.jpg": "0fdfff058e9d7dc2025a581a72856556f7f7aaf2",
+    "/assets/ELIoT_Eye.png": "4d4c8e435cbdd1fd83404aa36dfd27af0e23f688",
+    "/assets/ELIoT_Eye.psd": "77772ffae59595e0ecd309c351c4e04190325f07",
+    "/assets/Home_background.jpg": "b6ba42e9dd5a13786a0326d19fb258f833552fa1",
+    "/assets/IOT1.png": "a7f788d46f0460bdfffc421396199affccb71037",
+    "/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
+    "/assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
+    "/assets/icons/icon-152x152.png": "7479a9477815dfd9668d60f8b3b2fba709b91310",
+    "/assets/icons/icon-192x192.png": "1abd80d431a237a853ce38147d8c63752f10933b",
+    "/assets/icons/icon-384x384.png": "329749cd6393768d3131ed6304c136b1ca05f2fd",
+    "/assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
+    "/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
+    "/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
+    "/dxicons.71e4862eef32c43eca3f.woff2": "c813bf5dd5f5510f63eb7287073339e55586d58c",
+    "/dxicons.dffa1b6f8175e126e4fd.woff": "b20c12d9d5b6d78d6e5ea159f9eeda08f7658b3d",
+    "/dxicons.e7b052cb56375958973b.ttf": "f58fcdfefa3cc68a43fbd49a3745d3731aaccb32",
+    "/favicon.ico": "84161b857f5c547e3699ddfbffc6d8d737542e01",
+    "/index.html": "0a6179ee10bb8b5f9bc80ac53e0eff3642bdbbdd",
+    "/main-es2015.3392e18c16bb1280bd9f.js": "4a84bd591e52a1a15162b89b1bb33ac298e6f275",
+    "/main-es5.f505b9a10df5f991bb22.js": "0069e5f055078626ad172240abdc791f94a76daf",
+    "/polyfills-es2015.e4a1185e6871d06f842f.js": "a514da8731833287c9583044e9d512d74c45312a",
+    "/polyfills-es5.da479429bfd39fbf99d9.js": "7e1b38fcb73a9607657630e25f278302170f96dc",
+    "/runtime-es2015.10a1f01eef199006286d.js": "b62956c2192bfe5516d6374e753773901ed50ec5",
+    "/runtime-es5.9ad22a88fcc70a015907.js": "b62956c2192bfe5516d6374e753773901ed50ec5",
+    "/scripts.fd6c3c34e708ceb641bd.js": "e2525ab1732598b6bd68ff764a25acc22e1cccec",
+    "/styles.8b23563f918772486cc6.css": "268982bd8a5fa43f243d0b603836070d3b308090"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ]
+}
