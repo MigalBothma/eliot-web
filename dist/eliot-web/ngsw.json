@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1571085193360,
+  "timestamp": 1571085877791,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -32,7 +32,11 @@
         "/assets/ELIOT.png",
         "/assets/ELIOT.psd",
         "/assets/ELIOT_1.png",
+        "/assets/ELIOT_128x128.png",
+        "/assets/ELIOT_144x144.png",
+        "/assets/ELIOT_152x152.png",
         "/assets/ELIOT_192x192.png",
+        "/assets/ELIOT_256x256.png",
         "/assets/ELIOT_512x512.png",
         "/assets/ELIOT_favicon.ico",
         "/assets/ELIOT_favicon.png",
@@ -66,7 +70,11 @@
     "/assets/ELIOT.png": "fe36c51dff3dfdf1e24318e244e7703684e9a07a",
     "/assets/ELIOT.psd": "50410cc746aca595f0cdd8fc1db03b1871365be8",
     "/assets/ELIOT_1.png": "f1ced247331b95a092dc979b1dcb179ca6f8f5d5",
+    "/assets/ELIOT_128x128.png": "6c1c538b35333de1a2344cfa41e20e3a1bd20e0a",
+    "/assets/ELIOT_144x144.png": "cece456c17f8b3f10c220e8275ead9036b0863e9",
+    "/assets/ELIOT_152x152.png": "86fa5241764eeb57dcc7d647d55a73987c694774",
     "/assets/ELIOT_192x192.png": "520ee32b35b3e57b40d6fdcbebf61ecfcef79346",
+    "/assets/ELIOT_256x256.png": "37db7db8e921b6eb541d3024d62edc9dd095d0b8",
     "/assets/ELIOT_512x512.png": "68233e981c0ee151106e6a9bd87712bad117c01a",
     "/assets/ELIOT_favicon.ico": "ff885452b5e0fcfa4bc363f58a3589b137671c21",
     "/assets/ELIOT_favicon.png": "9ceb3f5625e540bfb3718c8c97c4e5cdda28ab17",
