@@ -8,8 +8,13 @@
   "start_url": "/",
   "icons": [
     {
-      "src": "assets/ELIOT_favicon.ico",
-      "sizes": "72x72",
+      "src": "assets/ELIOT_192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/ELIOT_512x512.png",
+      "sizes": "512x512",
       "type": "image/png"
     }
   ]
