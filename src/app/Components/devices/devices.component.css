@@ -36,8 +36,12 @@
 */
 
 @media (min-width: 481px) and (max-width: 767px) {
-    .device-sensor-info {
-        display: block;
+    .infotainer {
+        display: block !important;
+    }
+
+    .base-device-info {
+        margin-bottom: 32px !important; 
     }
 }
 
