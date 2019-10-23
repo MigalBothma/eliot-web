@@ -15,6 +15,9 @@ import { HomeComponent } from './Components/home/home.component';
 import { DashboardComponent } from './Components/dashboard/dashboard.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DashboardStaticComponent } from './Components/dashboard-static/dashboard-static.component';
+import { DevicesComponent } from './Components/devices/devices.component';
+import { PricingComponent } from './Components/pricing/pricing.component';
+import { AboutComponent } from './Components/about/about.component';
 
 import { TimeseriesService } from './Services/timeseries.service';
 import { FeaturesComponent } from './Components/features/features.component';
@@ -29,7 +32,10 @@ import { environment } from '../environments/environment';
     HomeComponent,
     DashboardComponent,
     DashboardStaticComponent,
-    FeaturesComponent
+    FeaturesComponent,
+    DevicesComponent,
+    PricingComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,

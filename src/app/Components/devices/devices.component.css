@@ -1,0 +1,149 @@
+/* 
+  ##Device = Desktops
+  ##Screen = 1281px to higher resolution desktops
+*/
+
+@media (min-width: 1281px) {}
+
+/* 
+##Device = Laptops, Desktops
+##Screen = B/w 1025px to 1280px
+*/
+
+@media (min-width: 1025px) and (max-width: 1280px) {}
+
+/* 
+##Device = Tablets, Ipads (portrait)
+##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .device-sensor-info {
+        display: block;
+    }
+}
+
+/* 
+##Device = Tablets, Ipads (landscape)
+##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {}
+
+/* 
+##Device = Low Resolution Tablets, Mobiles (Landscape)
+##Screen = B/w 481px to 767px
+*/
+
+@media (min-width: 481px) and (max-width: 767px) {
+    .device-sensor-info {
+        display: block;
+    }
+}
+
+/* 
+##Device = Most of the Smartphones Mobiles (Portrait)
+##Screen = B/w 320px to 479px
+*/
+
+@media (min-width: 320px) and (max-width: 480px) {}
+
+.container-background {
+    position: absolute;
+    top: 0px;
+    height: 100vh;
+    width: 100vw;
+    padding: 0px;
+    margin: auto;
+    overflow: hidden;
+}
+
+.content-container {
+    position: absolute;
+    height: calc(100vh - 66px);
+    width: 100vw;
+    padding: 0px;
+    z-index: 1;
+    top: 66px;
+}
+
+.coldcontrol-product-container {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    background-image: linear-gradient(#161616a4, #f8f9fa52);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.hide-scroll {
+    overflow-x: hidden;
+    margin-left: 0px;
+    margin-right: -64px;
+    height: 100%;
+}
+
+.infotainer {
+    display: inline-flex;
+    width: 100%;
+    padding-bottom: 64px;
+}
+
+.coldcontrol-logo-container {
+    height: 210px;
+    margin-bottom: 32px;
+    margin-top: 16px;
+    text-align: center;
+}
+
+.cc-logo-img{
+    background-color: white;
+    border-radius: 10px;
+    padding: 12px;
+    box-shadow: #00000040 5px 5px 10px 5px;  
+}
+
+.base-device-info {
+    padding: 15px;
+    padding-top: 32px;
+    padding-left: 23px;
+    color: white;
+    display: block;
+    flex: 1;
+    background-color: #0000007d;
+    margin-left: 12px;
+    margin-right: 12px;
+    border: 1px solid #ffffff4f;
+    border-radius: 5px;
+    box-shadow: #00000040 5px 5px 5px 5px;
+}
+
+.device-sensor-info {
+    padding: 15px;
+    padding-top: 32px;
+    padding-left: 23px;
+    color: white;
+    display: block;
+    flex: 1;
+    background-color: #0000007d;
+    margin-left: 12px;
+    margin-right: 12px;
+    border: 1px solid #ffffff4f;
+    border-radius: 5px;
+    box-shadow: #00000040 5px 5px 5px 5px;
+}
+
+.icon-item {
+    color: white;
+    flex: 0;
+    float: left;
+    padding: 10px;
+}
+
+.text-item {
+    margin-left: 10px;
+    color: white;
+    flex: 1;
+    float: right;
+    padding: 10px;
+}
