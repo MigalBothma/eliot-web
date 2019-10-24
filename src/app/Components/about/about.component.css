@@ -3,7 +3,18 @@
   ##Screen = 1281px to higher resolution desktops
 */
 
-@media (min-width: 1281px) {}
+@media (min-width: 1281px) {
+    .youtube-link-iot{
+        width: 80%;
+        height: 450px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .info {
+        margin-top: 66px !important;
+    }
+}
 
 /* 
 ##Device = Laptops, Desktops
@@ -17,7 +28,11 @@
 ##Screen = B/w 768px to 1024px
 */
 
-@media (min-width: 768px) and (max-width: 1024px) {}
+@media (min-width: 768px) and (max-width: 1024px) {
+    .img-blue-futuristic {
+        height: 285px !important;
+    }
+}
 
 /* 
 ##Device = Tablets, Ipads (landscape)
@@ -43,6 +58,10 @@
     .img-blue-futuristic{
         height: 220px !important;
     }
+
+    .top-img{
+        height: 340px !important;
+    }
 }
 
 /* 
@@ -52,8 +71,24 @@
 
 @media (min-width: 320px) and (max-width: 480px) {
     .content-container {
-        width: 80%;
+        width: 80% !important;
     }
+
+    .centered {
+        top: 10% !important;
+    }
+
+    .img-blue-futuristic{
+        height: 155px !important;
+    }
+
+    .top-img{
+        height: 155px !important;
+    }
+}
+
+.top-img{
+    width: 100%;
 }
 
 .container-background {
@@ -96,7 +131,13 @@
     font-family: 'Exo 2', sans-serif;
 }
 
-.youtube-link-iot {
+.youtube-link-iot{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.youtube-link-iot-container {
     width: 100%;
     display: inline-flex;
     margin-top: 32px;

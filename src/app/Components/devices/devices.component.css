@@ -21,6 +21,9 @@
     .device-sensor-info {
         display: block;
     }
+    .coldcontrol-product-container {
+        width: 80% !important;
+    }
 }
 
 /* 
@@ -43,6 +46,12 @@
     .base-device-info {
         margin-bottom: 32px !important; 
     }
+
+    .coldcontrol-product-container {
+        width: 70% !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
 }
 
 /* 
@@ -50,7 +59,25 @@
 ##Screen = B/w 320px to 479px
 */
 
-@media (min-width: 320px) and (max-width: 480px) {}
+@media (min-width: 320px) and (max-width: 480px) {
+    .infotainer {
+        display: block !important;
+    }
+
+    .base-device-info {
+        margin-bottom: 32px !important; 
+    }
+
+    .coldcontrol-product-container {
+        width: 80% !important;
+    }
+
+    .content-container[_ngcontent-qxj-c2] {
+        position: absolute;
+        height: calc(100vh - 86px) !important;
+        top: 32px;
+    }
+}
 
 .container-background {
     position: absolute;
@@ -78,12 +105,13 @@
     background-image: linear-gradient(#161616a4, #f8f9fa52);
     padding: 20px;
     border-radius: 10px;
+    margin-bottom: 64px;
 }
 
 .hide-scroll {
     overflow-x: hidden;
     margin-left: 0px;
-    margin-right: -64px;
+    margin-right: 0px;
     height: 100%;
 }
 
