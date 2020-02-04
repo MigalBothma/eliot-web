@@ -1,0 +1,159 @@
+[
+    {
+        "device_name": "Shelly 1",
+        "device_price": "169.99",
+        "device_type": "Power Switch",
+        "device_description": "Quad channel power monitoring / power switch.",
+        "device_features": [
+            "Remote Control  –Turn electronic devices on/off from anywhere",
+            "Monitor Energy Usage  –Keep track of live power, current and voltage of your appliances on App",
+            "Historical Energy Consumption  –100-day daily/monthly energy usage data and total electricity cost",
+            "Overload Protection  –Set power, current and voltage threshold values to let appliances auto-off",
+            "Measure Power Usage for a Period  –Measure your appliances’ power consumption for a specified time",
+            "Sync Status–Real-time device status provided to App",
+            "Timing Function –Supports 8 enabled scheduled/countdown timers",
+            "Share Control –Invite your family to control your smart home together",
+            "Scene–Turn on/off a gang of devices with one tap or triggered on/off by another smart device",
+            "Smart Scene–Triggered on/off by temp, hum or other environmental conditions from a sensor",
+            "APP Supported –Free iOS and Android eWeLink app",
+            "Compatibility –Works perfectly with Amazon Alexa, Google Assistant, IFTTT, Google Nest"
+        ],
+        "device_images": [
+            "./assets/devices/shelly_1.jpg"
+        ]
+    },
+    {
+        "device_name": "Shelly 1PM",
+        "device_price": "229.99",
+        "device_type": "Power Monitoring/Power Switch",
+        "device_description": "Single-channel power monitoring / power switch.",
+        "device_features": [
+            "Remote Control  –Turn electronic devices on/off from anywhere",
+            "Monitor Energy Usage  –Keep track of live power, current and voltage of your appliances on App",
+            "Historical Energy Consumption  –100-day daily/monthly energy usage data and total electricity cost",
+            "Overload Protection  –Set power, current and voltage threshold values to let appliances auto-off",
+            "Measure Power Usage for a Period  –Measure your appliances’ power consumption for a specified time",
+            "Sync Status–Real-time device status provided to App",
+            "Timing Function –Supports 8 enabled scheduled/countdown timers",
+            "Share Control –Invite your family to control your smart home together",
+            "Scene–Turn on/off a gang of devices with one tap or triggered on/off by another smart device",
+            "Smart Scene–Triggered on/off by temp, hum or other environmental conditions from a sensor",
+            "APP Supported –Free iOS and Android eWeLink app",
+            "Compatibility –Works perfectly with Amazon Alexa, Google Assistant, IFTTT, Google Nest"
+        ],
+        "device_images": [
+            "./assets/devices/shelly_1pm.jpg"
+        ]
+    },
+    {
+        "device_name": "Shelly 4Pro",
+        "device_price": "1299.99",
+        "device_type": "Power Monitoring/Power Switch",
+        "device_description": "Quad channel power monitoring / power switch.",
+        "device_features": [
+            "Remote Control  –Turn electronic devices on/off from anywhere",
+            "Monitor Energy Usage  –Keep track of live power, current and voltage of your appliances on App",
+            "Historical Energy Consumption  –100-day daily/monthly energy usage data and total electricity cost",
+            "Overload Protection  –Set power, current and voltage threshold values to let appliances auto-off",
+            "Measure Power Usage for a Period  –Measure your appliances’ power consumption for a specified time",
+            "Sync Status–Real-time device status provided to App",
+            "Timing Function –Supports 8 enabled scheduled/countdown timers",
+            "Share Control –Invite your family to control your smart home together",
+            "Scene–Turn on/off a gang of devices with one tap or triggered on/off by another smart device",
+            "Smart Scene–Triggered on/off by temp, hum or other environmental conditions from a sensor",
+            "APP Supported –Free iOS and Android eWeLink app",
+            "Compatibility –Works perfectly with Amazon Alexa, Google Assistant, IFTTT, Google Nest"
+        ],
+        "device_images": [
+            "./assets/devices/shelly_4pro.jpg"
+        ]
+    },
+    {
+        "device_name": "Shelly 3EM",
+        "device_price": "1799.99",
+        "device_type": "Power Monitoring/Power Switch",
+        "device_description": "Tri channel 120A max power monitoring / power switch.",
+        "device_features": [
+            "Remote Control  –Turn electronic devices on/off from anywhere",
+            "Monitor Energy Usage  –Keep track of live power, current and voltage of your appliances on App",
+            "Historical Energy Consumption  –100-day daily/monthly energy usage data and total electricity cost",
+            "Overload Protection  –Set power, current and voltage threshold values to let appliances auto-off",
+            "Measure Power Usage for a Period  –Measure your appliances’ power consumption for a specified time",
+            "Sync Status–Real-time device status provided to App",
+            "Timing Function –Supports 8 enabled scheduled/countdown timers",
+            "Share Control –Invite your family to control your smart home together",
+            "Scene–Turn on/off a gang of devices with one tap or triggered on/off by another smart device",
+            "Smart Scene–Triggered on/off by temp, hum or other environmental conditions from a sensor",
+            "APP Supported –Free iOS and Android eWeLink app",
+            "Compatibility –Works perfectly with Amazon Alexa, Google Assistant, IFTTT, Google Nest"
+        ],
+        "device_images": [
+            "./assets/devices/shelly_3em.jpg"
+        ]
+    },
+    {
+        "device_name": "SONOFF® POW R2",
+        "device_price": "229.99",
+        "device_type": "Power Monitoring/Power Switch",
+        "device_description": "Single-channel power monitoring / power switch.",
+        "device_features": [
+            "Remote Control  –Turn electronic devices on/off from anywhere",
+            "Monitor Energy Usage  –Keep track of live power, current and voltage of your appliances on App",
+            "Historical Energy Consumption  –100-day daily/monthly energy usage data and total electricity cost",
+            "Overload Protection  –Set power, current and voltage threshold values to let appliances auto-off",
+            "Measure Power Usage for a Period  –Measure your appliances’ power consumption for a specified time",
+            "Sync Status–Real-time device status provided to App",
+            "Timing Function –Supports 8 enabled scheduled/countdown timers",
+            "Share Control –Invite your family to control your smart home together",
+            "Scene–Turn on/off a gang of devices with one tap or triggered on/off by another smart device",
+            "Smart Scene–Triggered on/off by temp, hum or other environmental conditions from a sensor",
+            "APP Supported –Free iOS and Android eWeLink app",
+            "Compatibility –Works perfectly with Amazon Alexa, Google Assistant, IFTTT, Google Nest"
+        ],
+        "device_images": [
+            "./assets/devices/pow_r2.jpg"
+        ]
+    },
+    {
+        "device_name": "SONOFF® TH 10 + DS18B20",
+        "device_price": "239.99",
+        "device_type": "Temperature and/or humidity",
+        "device_description": "DS18B or DHT-11/22 compatible.",
+        "device_features": [
+            "Remote Control  –Turn electronic devices on/off from anywhere",
+            "Monitor Energy Usage  –Keep track of live power, current and voltage of your appliances on App",
+            "Historical Energy Consumption  –100-day daily/monthly energy usage data and total electricity cost",
+            "Overload Protection  –Set power, current and voltage threshold values to let appliances auto-off",
+            "Measure Power Usage for a Period  –Measure your appliances’ power consumption for a specified time",
+            "Sync Status–Real-time device status provided to App",
+            "Timing Function –Supports 8 enabled scheduled/countdown timers",
+            "Share Control –Invite your family to control your smart home together",
+            "Scene–Turn on/off a gang of devices with one tap or triggered on/off by another smart device",
+            "Smart Scene–Triggered on/off by temp, hum or other environmental conditions from a sensor",
+            "APP Supported –Free iOS and Android eWeLink app",
+            "Compatibility –Works perfectly with Amazon Alexa, Google Assistant, IFTTT, Google Nest"
+        ],
+        "device_images": [
+            "./assets/devices/th10_ds18.jpeg"
+        ]
+    },
+    {
+        "device_name": "SONOFF® Basic R3",
+        "device_price": "169.99",
+        "device_type": "Power Switch",
+        "device_description": "Intrusive Wiring.",
+        "device_features": [
+            "Remote Control  –Turn electronic devices on/off from anywhere",
+            "Sync Status–Real-time device status provided to App",
+            "Timing Function –Supports 8 enabled scheduled/countdown timers",
+            "Share Control –Invite your family to control your smart home together",
+            "Scene–Turn on/off a gang of devices with one tap or triggered on/off by another smart device",
+            "Smart Scene–Triggered on/off by temp, hum or other environmental conditions from a sensor",
+            "APP Supported –Free iOS and Android eWeLink app",
+            "Compatibility –Works perfectly with Amazon Alexa, Google Assistant, IFTTT, Google Nest"
+        ],
+        "device_images": [
+            "./assets/devices/basic_r3.jpeg"
+        ]
+    }
+]

@@ -5,10 +5,81 @@
     <div class="hide-scroll">
         <div class="row" style="display: flex; overflow-y: scroll;">
             <div class="coldcontrol-product-container">
-                <div class="coldcontrol-logo-container">
+                <div class="col-md-12" style="display: inline-flex; padding: 10px; padding-top: 16px; justify-content: center;">
+                    <i class="material-icons" style="align-self: center; color: white;">
+                        settings_remote
+                    </i>
+                    <h1 style="margin-left: 32px; align-self: center; color: white; ">Supported
+                        Devices
+                    </h1>
+                </div>
+                <div class="row" style="display: inline-flex; padding: 32px;">
+                    <div class="col-md-6" *ngFor="let device of deviceData" style="margin-bottom: 16px; margin-left: auto; margin-right: auto;">
+                        <div class="card" style="width: 100%; height: 100%; margin-bottom: 16px;">
+                            <img src={{device.device_images[0]}} class="card-img-top">
+                            <h5 class="card-title" style="text-align: center;">{{device.device_name}}</h5>
+                            <div class="row">
+                                <div class="col-md-12 row" style="text-align: center; margin-left: auto; margin-right: auto;">
+                                    <div class="col-md-4 item">
+                                        Device Type : 
+                                    </div>
+                                    <div class="col-md-8 item-nb" style="display: inline-flex;">
+                                        <div *ngIf="device.device_type == 'Power Monitoring'">
+                                            <i class="material-icons icon-item " style="align-self: center;">
+                                                offline_bolt
+                                            </i>
+                                        </div>
+                                        <div *ngIf="device.device_type == 'Power Monitoring/Power Switch'">
+                                            <i class="material-icons icon-item " style="align-self: center;">
+                                                offline_bolt
+                                            </i>
+                                        </div>
+                                        <div *ngIf="device.device_type == 'Power Switch'">
+                                            <i class="material-icons icon-item " style="align-self: center;">
+                                                offline_bolt
+                                            </i>
+                                        </div>
+                                        <div *ngIf="device.device_type == 'Temperature and/or humidity'">
+                                            <i class="material-icons icon-item " style="align-self: center;">
+                                                whatshot
+                                            </i>
+                                        </div>
+                                        <div style="align-self: center;">
+                                            {{device.device_type}}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-10 row" style="text-align: center; margin-left: auto; margin-right: auto;">
+                                    <div class="col-md-4 item">
+                                        Device Price : 
+                                    </div>
+                                    <div class="col-md-8 item-nb">
+                                        R{{device.device_price}}
+                                    </div>
+                                </div>
+                                <div class="col-md-10 row" style="text-align: center; margin-left: auto; margin-right: auto;">
+                                    <div class="col-md-4 item">
+                                        Device Description : 
+                                    </div>
+                                    <div class="col-md-8 item-nb">
+                                        {{device.device_description}}
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <h5 class="card-title" style="text-align: center; padding-top: 16px;">Features</h5>
+                            <ul class="list-group">
+                                <li class="list-group-item" *ngFor="let feature of device.device_features">{{feature}}
+                                </li>
+                            </ul>
+                            <p class="card-text" style="padding-left: 10px; padding-right: 10px;"> </p> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="coldcontrol-logo-container" style="margin-top: 32px;">
                     <img class="cc-logo-img" src="assets/cold-controljpg.jpg" style="height: 100%;">
                 </div>
-                <h2 style="color: white; text-align: center; margin-top: 0px; margin-bottom: 32px;">Cold Storage
+                <h2 style="color: white; text-align: center; margin-top: 0px; margin-bottom: 32px;">In Development -
+                    Cold Storage
                     Monitoring and Analytics</h2>
                 <div class="infotainer">
                     <div class="base-device-info">
@@ -96,7 +167,7 @@
                                         offline_bolt
                                     </i>
                                     <p class="text-item">
-                                        6 x 230v/400v Voltage Meters.
+                                        1 x Voltage Meter.
                                     </p>
                                 </div>
                             </div>
@@ -118,7 +189,7 @@
                                         offline_bolt
                                     </i>
                                     <p class="text-item">
-                                        6 x Wattage Meters ( Combined Measurements ).
+                                        6 x Wattage Readings ( Combined Measurements ).
                                     </p>
                                 </div>
                             </div>
@@ -129,7 +200,7 @@
                                         whatshot
                                     </i>
                                     <p class="text-item">
-                                        2 x Digital Thermometers ( 2 digit precision ).
+                                        1 to Many Digital Thermometers ( 2 digit precision ).
                                     </p>
                                 </div>
                             </div>
