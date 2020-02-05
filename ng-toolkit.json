@@ -1,0 +1,7 @@
+{
+  "pwa": {
+    "clientProject": "eliot-web",
+    "skipInstall": false,
+    "directory": "."
+  }
+}
